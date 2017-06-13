@@ -6,11 +6,13 @@
  * Time: 10:34
  */
 
-include_once (__DIR__ . "/core.php");
 
-foreach ($arr as $k => $v){
+include_once __DIR__ . '/core.php';
+require __DIR__ . '/Helper.php';
 
-}
+$arr = ['home', 'about', 'contact'];
+$validator = new Validator($arr, $_GET['p'] ?? '', __DIR__ . "/pages/");
+$validator->errorPage = 'error';
 
 ?>
 
@@ -25,18 +27,17 @@ foreach ($arr as $k => $v){
 </head>
 <body>
 <nav>
-	<a href="">home</a>
-	<a href="">about</a>
-	<a href="">contact</a>
+	<a href="?p=home">home</a>
+	<a href="?p=about">about</a>
+	<a href="?p=contact">contact</a>
 </nav>
-
 
 
 <main class="content">
 
-<?php
-	include (__DIR__ . '/pages/' . $_GET["page"] . '.php');
-?>
+	<?php
+	include __DIR__ . '/pages/' . $validator->getValidatedPage() . '.php';
+	?>
 
 </main>
 

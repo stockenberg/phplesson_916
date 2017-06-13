@@ -13,6 +13,7 @@ $error = [];
 $postData = [];
 
 if (isset($_POST['submit'])) {
+
 	/**
 	 * Check Firstname
 	 */

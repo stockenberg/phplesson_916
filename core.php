@@ -9,11 +9,6 @@
 $title = "My Freakin Headline!";
 $arr = ["Laptop", "Backpack"];
 
-function do_something()
-{
-	echo "id did something";
-}
-
 function gen_title ($key)
 {
 	$titles = [
@@ -23,4 +18,31 @@ function gen_title ($key)
 	];
 
 	return $titles[$key];
+}
+
+
+$whitelistPages = [
+	'home',
+	'about',
+	'contact'
+];
+
+/**
+ * @param array $whitelist
+ * @param String $page
+ * @return String
+ */
+function validatePages(Array $whitelist = [], String $page = 'home') : String
+{
+	if (isset($_GET['p'])) {
+		if (in_array($_GET['p'], $whitelist)) {
+			if (file_exists(__DIR__ . '/pages/' . $_GET['p'] . '.php')) {
+				$page = $_GET['p'];
+			} else {
+				$page = '404';
+			}
+		}
+	}
+
+	return $page;
 }
