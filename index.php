@@ -8,11 +8,29 @@
 
 
 include_once __DIR__ . '/core.php';
-require __DIR__ . '/Helper.php';
+require __DIR__ . '/Validator.php';
+require __DIR__ . '/FormValidator.php';
 
 $arr = ['home', 'about', 'contact'];
 $validator = new Validator($arr, $_GET['p'] ?? '', __DIR__ . "/pages/");
 $validator->errorPage = 'error';
+
+$val = new FormValidator();
+
+$post = [
+	'firstname' => 'Marten',
+	'lastname' => "Stockenberg",
+	'message' => 'gleich is pause!'
+];
+
+if (!empty($post)) {
+	$val->validate($post);
+}
+
+print_r($val->output);
+print_r($val->errors);
+
+
 
 ?>
 
