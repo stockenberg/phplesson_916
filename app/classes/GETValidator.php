@@ -18,7 +18,7 @@ class GETValidator
 
 	public function getValidatedPage() : String
 	{
-		if(null !== $this->page){
+		if($this->page !== ''){
 
 			if(in_array($this->page, $this->whitelist)){
 				if(file_exists($this->path . $this->page . '.php')){
@@ -32,6 +32,8 @@ class GETValidator
 				return $this->errorPage;
 			}
 
+			return $this->defaultPage;
+		}else{
 			return $this->defaultPage;
 		}
 	}

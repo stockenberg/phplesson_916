@@ -23,7 +23,7 @@ class App
 		switch ($this->page){
 			case 'home':
 				// Logik für die Startseite
-				echo "Logik für die Startseite";
+				//echo "Logik für die Startseite";
 				break;
 
 			case 'about':
