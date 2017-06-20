@@ -1,6 +1,8 @@
 <?php
 
+include __DIR__ . '/config.php';
 include __DIR__ . '/classes/App.php';
+
 
 $app = new App();
 $app->boot();
