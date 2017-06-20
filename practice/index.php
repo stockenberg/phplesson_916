@@ -12,7 +12,7 @@ require __DIR__ . '/Validator.php';
 require __DIR__ . '/FormValidator.php';
 
 $arr = ['home', 'about', 'contact'];
-$validator = new Validator($arr, $_GET['p'] ?? '', __DIR__ . "/pages/");
+$validator = new GETValidator($arr, $_GET['p'] ?? '', __DIR__ . "/pages/");
 $validator->errorPage = 'error';
 
 $val = new FormValidator();
