@@ -1,0 +1,18 @@
+
+
+
+
+
+
+
+1. Definiert euch die Aufrufe die ihr verwenden wollt.
+2. Definiert die Properties.
+3. Definiert die Methoden.
+4. Baut in die Methoden die Funktionalität ein.
+    - Wurde der Submit Btn gedrückt?
+    - Ist das Feld ein Pflichtfeld ?
+        - Ist der Wert des Feldes Leer ?
+            - Welche Fehlermeldung geb ich dem User?
+        - Gibt es Fehler?
+            - Ja: Gib die Fehler aus
+            - Nein: Schicke die Daten irgendwo hin..

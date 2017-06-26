@@ -9,10 +9,10 @@ class GETValidator
 	public $errorPage = '404';
 	public $path;
 
-	public function __construct(Array $whitelist, String $pageParam, String $path)
+	public function __construct(Array $whitelist, String $getParam, String $path)
 	{
 		$this->whitelist = $whitelist;
-		$this->page = $pageParam ?? '';
+		$this->page = $getParam;
 		$this->path = $path;
 	}
 

@@ -1,0 +1,64 @@
+Meeting Protokoll Patrick Clausner
+
+Website – für Kunden
+Branche: Verkauf von Obst
+
+- Informationsquelle
+    - Arten
+    - Geschmackssorten
+        - ? Rezepte
+- Saisonbasiert
+    - Angebot und Werbung
+    - Newsletter versenden
+
+Reservierungssystem / Buchung
+    # Ablauf
+    - Artkel in den Warenkorb
+        - Wird der Bestand des Artikels wird angepasst.
+    - Artikel aus dem Warenkorb
+        - Bestand wird freigegeben.
+
+        - Bestellung per Email schicken
+            - Nach 3 Tagen wird die Sperrung aufgehoben.
+
+    - Bestellung wird im Backend gelistet
+        - bsp: 23.05.17, 3 Äpfel, Bauer Horst XY, warte auf antwort
+        - Excel Export
+
+
+    # CMS
+    - Bestandssystem
+        - Produktverwaltung
+            - Name
+            - Bestand
+            - Preis
+            - ? Typ
+    - News Editieren
+        - admin
+            - ANlegen
+
+
+    # Rechtesystem
+        # Admin
+        # employee
+            - CRUD (Create, Read, Update, Delete)
+            - Bestellübersicht / Lesen
+            - Status veränderung
+                - Mail an den Admin - Status wurde verändert.
+
+    # Ausblick: UPS Api integrieren.
+
+
+Sitemap
+    News
+    Produktübersicht
+    #Bestellvorgang
+        - Warenkorb
+        - Eingabefelder / Datenerfassung
+        - Bestellung überprüfen
+    Login
+   #Backend
+        - Benutzerverwaltung
+        - Produktverwaltung
+        - Newsverwaltung
+        - Bestellübersicht

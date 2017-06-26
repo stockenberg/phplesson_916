@@ -24,12 +24,12 @@ $app->boot();
 	<link rel="stylesheet" href="assets/css/Navigation-Clean1.css">
 	<link rel="stylesheet" href="assets/css/Simple-Slider.css">
 	<link rel="stylesheet" href="assets/css/styles.css">
-	<title>Document</title>
+	<title>916 CMS</title>
 </head>
-<body>
 
 <body>
 <div>
+
 	<nav class="navbar navbar-default navigation-clean">
 		<div class="container">
 			<div class="navbar-header"><a href="#" class="navbar-brand navbar-link">Company Name</a>
