@@ -6,7 +6,7 @@
  * Date: 26.06.17
  * Time: 16:15
  */
-include CLASSES . 'models/Model.php';
+
 
 class Home extends Model
 {

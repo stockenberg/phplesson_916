@@ -6,6 +6,7 @@
  * Date: 20.06.17
  * Time: 16:05
  */
+include CLASSES . 'models/Model.php';
 include CLASSES . 'GETValidator.php';
 include CLASSES . 'controllers/CartController.php';
 include CLASSES . 'controllers/HomeController.php';
@@ -74,6 +75,7 @@ class App
 
 			case 'login':
 				$login = new LoginController();
+				$login->run();
 				break;
 
 			case 'contact':

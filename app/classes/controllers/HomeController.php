@@ -6,7 +6,7 @@
  * Date: 26.06.17
  * Time: 15:50
  */
-include CLASSES . 'models/Home.php';
+require_once CLASSES . 'models/Home.php';
 
 class HomeController
 {

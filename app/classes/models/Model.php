@@ -13,6 +13,7 @@ class Model
 	public function __construct()
 	{
 		$this->db = new PDO(DSN, DBUSER, DBPASS);
+		echo "test";
 	}
 
 }

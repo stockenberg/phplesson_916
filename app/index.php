@@ -37,8 +37,8 @@ $app->boot();
 			</div>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li role="presentation" class="active"><a href="#">First Item</a></li>
-					<li role="presentation"><a href="#">Second Item</a></li>
+					<li role="presentation"><a href="?p=home">Startseite</a></li>
+					<li role="presentation"><a href="?p=login">Login</a></li>
 					<li role="presentation"><a href="#">Third Item</a></li>
 					<li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">Dropdown <span class="caret"></span></a>
 						<ul role="menu" class="dropdown-menu">
