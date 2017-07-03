@@ -20,3 +20,10 @@ define('CLASSES', __DIR__ . '/classes/');
 define('DSN', 'mysql:host=localhost;dbname=phplesson');
 define('DBUSER', 'root');
 define('DBPASS', '1234');
+
+/**
+ * Rights Definition
+ */
+define('ADMIN', 1);
+define('AUTHOR', 2);
+define('USER', 3);

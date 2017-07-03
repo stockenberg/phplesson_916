@@ -4,25 +4,25 @@ Website – für Kunden
 Branche: Verkauf von Obst
 
 - Informationsquelle
-    - Arten
+    - #db -> Arten
     - Geschmackssorten
         - ? Rezepte
 - Saisonbasiert
-    - Angebot und Werbung
-    - Newsletter versenden
+    - ?? Angebot und Werbung
+    - #DB Newsletter versenden
+        - EMail Adressen
 
 Reservierungssystem / Buchung
     # Ablauf
-    - Artkel in den Warenkorb
-        - Wird der Bestand des Artikels wird angepasst.
+    - SESSION: Artkel in den Warenkorb
+        - #DB -> Wird der Bestand des Artikels wird angepasst.
     - Artikel aus dem Warenkorb
-        - Bestand wird freigegeben.
-
+        - #DB Bestand wird freigegeben.
         - Bestellung per Email schicken
-            - Nach 3 Tagen wird die Sperrung aufgehoben.
 
-    - Bestellung wird im Backend gelistet
-        - bsp: 23.05.17, 3 Äpfel, Bauer Horst XY, warte auf antwort
+
+   #DB - Bestellung wird im Backend gelistet
+        - bsp: 23.05.17, 3 Äpfel, Bauer Horst XY, warte auf
         - Excel Export
 
 
