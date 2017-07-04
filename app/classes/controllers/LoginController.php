@@ -28,6 +28,10 @@ class LoginController
 					$userData = $user->getUserByEmail($_POST['email'] ?? '');
 
 					print_r($userData);
+					// Todo: Check Passwords against password_verify
+					// Store Data in Session
+					// Login Complete
+
 				}
 				break;
 		}
