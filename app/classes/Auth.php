@@ -11,12 +11,14 @@ class Auth
 
     private static $location = '?p=home';
 
-    /**
-     * Denies any User defined in Groups array from access and redirects him/her
-     * @param $user_id
-     * @param array $groups
-     */
-    public static function deny($user_id, $groups = [])
+	/**
+	 * Denies Access to Sites Specified by Group Array
+	 * @param int   $user_id
+	 * @param array $groups
+	 *
+	 * @return bool
+	 */
+    public static function deny(int $user_id, array $groups = [])
     {
 
         if (in_array($user_id, $groups)) {
@@ -28,8 +30,14 @@ class Auth
 
     }
 
-
-    public static function allow($user_id, $groups = [])
+	/*
+	 * Allows any User defined in Groups array the access to specific functions
+	 * @param int   $user_id
+	 * @param array $groups
+	 *
+	 * @return bool
+	 */
+    public static function allow(int $user_id, array $groups = [])
     {
         if (in_array($user_id, $groups)) {
             return true;
