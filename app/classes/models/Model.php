@@ -13,7 +13,7 @@ class Model
 	public function __construct()
 	{
 		$this->db = new PDO(DSN, DBUSER, DBPASS);
-		echo "test";
+		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
 }

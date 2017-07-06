@@ -12,68 +12,93 @@ require_once CLASSES . 'models/User.php';
 class LoginController
 {
 
-	private $request;
-	private $status = [];
+    private $request;
+    private $status = [];
+    private $location = '?p=home';
 
 
-	public function run() {
+    public function run()
+    {
 
-		$this->request = array_merge($_GET, $_POST);
+        $this->request = array_merge($_GET, $_POST);
 
-		switch ($this->request['action'] ?? ''){
-			case 'login':
-				if($this->validateLoginForm($_POST)){
-					// log me in
-					$user = new User();
-					$userData = $user->getUserByEmail($_POST['email'] ?? '');
+        switch ($this->request['action'] ?? '') {
+            case 'login':
 
-					print_r($userData);
-					// Todo: Check Passwords against password_verify
-					// Store Data in Session
-					// Login Complete
+                if ($this->validateLoginForm($_POST)) {
+                    // log me in
+                    $user = new User();
+                    $userData = $user->getUserByEmail($_POST['email'] ?? '');
 
-				}
-				break;
-		}
 
-	}
+                    if (count($userData) > 0) {
+                        // user exists
 
-	public function validateLoginForm(Array $post = []) : bool
-	{
-		print_r($post);
-		if(isset($post['login'])){
-			if($post['email'] == ''){
-				$this->setStatus('email', 'Bitte E-Mail-Adresse eingeben!');
-			}
+                        if (password_verify($_POST['password'], $userData[0]['password'])) {
+                            // logged in
+                            $_SESSION['user'] = [
+                                'id' => $userData[0]['id'],
+                                'username' => $userData[0]['username'],
+                                'role' => $userData[0]['role']
+                            ];
 
-			if($post['password'] == ''){
-				$this->setStatus('password', 'Bitte Passwort eingeben!');
-			}
+                            // redirect
+                            header('Location: ' . $this->location);
+                            exit();
 
-			if(empty($this->getStatus())){
-				return true;
-			}
+                        } else {
+                            $this->setStatus('error', 'E-Mail-Adresse oder Passwort sind nicht korrekt.');
+                        }
 
-		}
+                    }
 
-	}
-	/**
-	 * @return array
-	 */
-	public function getStatus(): array
-	{
-		return $this->status;
-	}
+                    // Todo: Check Passwords against password_verify
+                    // Store Data in Session
+                    // Login Complete
 
-	/**
-	 * @param String $key
-	 * @param String $error
-	 */
-	public function setStatus(String $key, String $error)
-	{
-		$this->status[$key] = $error;
-	}
+                }
+                break;
+        }
 
+    }
+
+    public function validateLoginForm(Array $post = []): bool
+    {
+        if (isset($post['login'])) {
+            if ($post['email'] == '') {
+                $this->setStatus('email', 'Bitte E-Mail-Adresse eingeben!');
+            }
+
+            if ($post['password'] == '') {
+                $this->setStatus('password', 'Bitte Passwort eingeben!');
+            }
+
+            if (empty($this->getStatus())) {
+                return true;
+            }
+
+        }
+
+        return false;
+
+    }
+
+    /**
+     * @return array
+     */
+    public function getStatus(): array
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param String $key
+     * @param String $error
+     */
+    public function setStatus(String $key, String $error)
+    {
+        $this->status[$key] = $error;
+    }
 
 
 }

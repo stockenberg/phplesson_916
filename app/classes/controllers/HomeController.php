@@ -12,7 +12,7 @@ class HomeController
 {
 	//
 
-	public function requestNews() : Array
+	public function requestNews() : array
 	{
 		$home = new Home();
 		return $home->getNews();
