@@ -10,8 +10,7 @@
         - **git push** - send it to repo
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
-
--------
+------------------------
 
 ## 11.07.17
 - Git Grundlagen
