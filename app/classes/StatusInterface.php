@@ -9,8 +9,10 @@
 interface StatusInterface
 {
 
-	public static function read(String $key = NULL) : string;
+	public static function read(String $key = NULL) : String;
 
 	public static function write(String $key = NULL, String $value = NULL);
+
+	public static function empty() : Bool;
 
 }

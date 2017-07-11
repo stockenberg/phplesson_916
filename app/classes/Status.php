@@ -10,7 +10,7 @@ class Status implements StatusInterface
 {
 	private static $status = [];
 
-	public static function read(String $key = null): string
+	public static function read(String $key = null): String
 	{
 		if (!is_null($key)) {
 			if (in_array($key, self::$status)) {
@@ -24,7 +24,7 @@ class Status implements StatusInterface
 		self::$status[$key] = $value;
 	}
 
-	public static function empty(): bool
+	public static function empty(): Bool
 	{
 		return empty(self::$status);
 	}
