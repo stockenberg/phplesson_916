@@ -9,6 +9,9 @@ include __DIR__ . '/classes/App.php';
 $app = new App();
 $app->boot();
 
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 ?>
 
 <!doctype html>

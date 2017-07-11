@@ -50,13 +50,16 @@ class App
      */
     public function boot()
     {
+
         $validate = new GETValidator($this->whitelist, $_GET['p'] ?? '', __DIR__ . '/../pages/');
         $this->page = $validate->getValidatedPage();
 
         switch ($this->page) {
             case 'news-edit':
 
-                $news = new NewsController();
+				Auth::allow($_SESSION['user']['id'] ?? 0, [ADMIN]);
+
+				$news = new NewsController();
                 $news->run();
                 $this->content['news'] = $news->requestNews();
 

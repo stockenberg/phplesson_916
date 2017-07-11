@@ -6,7 +6,7 @@
 	<form class="form-signin" action="?p=login&action=login" method="post">
 		<input class="form-control"
 		       type="email"
-		       placeholder="Email address"
+		       placeholder="E-Mail-Adresse"
 		       autofocus
 		       id="inputEmail"
 		       name="email"/>

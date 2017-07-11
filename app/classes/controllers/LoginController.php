@@ -33,7 +33,6 @@ class LoginController
 
                     if (count($userData) > 0) {
                         // user exists
-
                         if (password_verify($_POST['password'], $userData[0]['password'])) {
                             // logged in
                             $_SESSION['user'] = [
