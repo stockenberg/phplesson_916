@@ -19,7 +19,7 @@ class Status implements StatusInterface
 		}
 	}
 
-	public static function write(String $key = null, String $value = null)
+	public static function write(String $key = null, String $value = null): void
 	{
 		self::$status[$key] = $value;
 	}
