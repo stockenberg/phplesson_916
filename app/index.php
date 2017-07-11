@@ -3,20 +3,12 @@ session_name('phplesson');
 session_start();
 
 include __DIR__.'/config.php';
-require_once "autoload.php";
-
-/*
- * GIT Example - changed major stuff!!
- */
+require_once __DIR__ . '/vendor/autoload.php';
 
 
-
-$app = new \app\classes\App();
+$app = new Marten\classes\App();
 $app->boot();
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 ?>
 
 <!doctype html>

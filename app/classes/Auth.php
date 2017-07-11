@@ -6,6 +6,8 @@
  * Date: 04/07/17
  * Time: 16:13
  */
+namespace Marten\classes;
+
 class Auth
 {
 

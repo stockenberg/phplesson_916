@@ -7,7 +7,9 @@
  * Time: 17:51
  */
 
-require_once CLASSES . 'models/News.php';
+namespace Marten\classes\controllers;
+
+use Marten\classes\models\News;
 
 class NewsController
 {

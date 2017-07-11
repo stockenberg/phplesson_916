@@ -6,6 +6,8 @@
  * Date: 20.06.17
  * Time: 17:52
  */
+namespace Marten\classes\controllers;
+
 class CartController
 {
 

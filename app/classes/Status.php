@@ -7,6 +7,8 @@
  * Time: 17:33
  */
 
+namespace Marten\classes;
+
 class Status implements StatusInterface
 {
 	private static $status = [];

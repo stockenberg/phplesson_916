@@ -6,6 +6,10 @@
  * Date: 04/07/17
  * Time: 17:21
  */
+namespace Marten\classes\models;
+
+use Marten\classes\App;
+
 class News extends Model
 {
 
@@ -15,7 +19,7 @@ class News extends Model
 		$stmt = $this->db->prepare($SQL);
 		$stmt->execute();
 
-		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public function delete(int $id = null)

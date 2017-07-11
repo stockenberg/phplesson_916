@@ -7,6 +7,7 @@
  * Time: 16:15
  */
 
+namespace Marten\classes\models;
 
 class Home extends Model
 {
@@ -23,7 +24,7 @@ class Home extends Model
 		$stmt->execute();
 
 		// Fetch
-		$news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $news;
 	}

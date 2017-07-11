@@ -6,6 +6,8 @@
  * Date: 11.07.17
  * Time: 17:31
  */
+namespace Marten\classes;
+
 interface StatusInterface
 {
 

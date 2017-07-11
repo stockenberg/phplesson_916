@@ -1,5 +1,7 @@
 <?php
 
+namespace Marten\classes;
+
 class GETValidator
 {
 

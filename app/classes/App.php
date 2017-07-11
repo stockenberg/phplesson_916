@@ -7,7 +7,17 @@
  * Time: 16:05
  */
 
-namespace app\classes;
+namespace Marten\classes;
+
+
+
+use Marten\classes\controllers\CartController;
+use Marten\classes\controllers\ContactController;
+use Marten\classes\controllers\HomeController;
+use Marten\classes\controllers\LoginController;
+use Marten\classes\controllers\NewsController;
+use Marten\classes\controllers\OrderController;
+use Marten\classes\controllers\ProductController;
 
 class App
 {

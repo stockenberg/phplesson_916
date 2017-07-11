@@ -7,6 +7,8 @@
  * Time: 17:42
  */
 
+namespace Marten\classes\models;
+
 class User extends Model
 {
 
@@ -18,7 +20,7 @@ class User extends Model
 			[':email' => $email]
 		);
 
-		$user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$user = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $user;
 	}

@@ -6,7 +6,9 @@
  * Date: 26.06.17
  * Time: 15:50
  */
-require_once CLASSES . 'models/Home.php';
+namespace Marten\classes\controllers;
+
+use Marten\classes\models\Home;
 
 class HomeController
 {

@@ -7,7 +7,9 @@
  * Time: 17:53
  */
 
-require_once CLASSES . 'models/User.php';
+namespace Marten\classes\controllers;
+
+use Marten\classes\models\User;
 
 class LoginController
 {
