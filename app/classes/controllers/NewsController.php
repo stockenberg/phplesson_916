@@ -37,6 +37,7 @@ class NewsController
 				// reach me...
 				// validate input
 				// call model method updateNews
+				// $news->update($_POST, $_GET['update']);
 				break;
 
 			case 'edit':
