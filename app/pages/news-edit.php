@@ -23,7 +23,7 @@
                 <td><?= $news['content'] ?></td>
                 <td><?= date('d.m.Y H:i', strtotime($news['created_at'])) ?> Uhr</td>
                 <td><?= date('d.m.Y H:i', strtotime($news['updated_at'])) ?> Uhr</td>
-                <td><a href="" class="btn btn-warning">Edit</a></td>
+                <td><a href="?p=news-edit&action=edit&edit=<?= $news['id'] ?>" class="btn btn-warning">Edit</a></td>
                 <td><a href="?p=news-edit&action=delete&delete=<?= $news['id'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
         <?php endforeach; ?>
@@ -35,20 +35,30 @@
     </table>
 
     <div class="row">
-
+        <!--  -->
         <form action="?p=news-edit&action=insert" method="post">
 
             <div class="form-group">
 
                 <label for="">Title</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="form-control"
+                       value="<?= $app->content['edit'][0]['title'] !== '' ? $app->content['edit'][0]['title'] : '' ?>"
+                       name="title">
+                <p class="text-danger">
+                    <?= \Marten\classes\Status::read('title') ?>
+                </p>
 
             </div>
 
             <div class="form-group">
 
                 <label for="">Text</label>
-                <textarea class="form-control" name="content"></textarea>
+                <textarea class="form-control" name="content"><?=
+					$app->content['edit'][0]['content'] !== '' ? $app->content['edit'][0]['content'] : ''
+                    ?></textarea>
+                <p class="text-danger">
+                    <?= \Marten\classes\Status::read('content') ?>
+                </p>
 
             </div>
 

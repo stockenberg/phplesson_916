@@ -6,6 +6,7 @@
  * Date: 04/07/17
  * Time: 17:21
  */
+
 namespace Marten\classes\models;
 
 use Marten\classes\App;
@@ -20,6 +21,31 @@ class News extends Model
 		$stmt->execute();
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function getNewsById(int $id = null): array
+	{
+		$SQL = 'SELECT * FROM news WHERE id = :id';
+		$stmt = $this->db->prepare($SQL);
+		$stmt->execute(
+			[':id' => $id]
+		);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function updateNews(array $post = NULL, int $id = NULL) : void
+	{
+		$SQL = 'UPDATE news 
+				SET title = :title, content = :content 
+				WHERE id = :id';
+
+		$stmt = $this->db->prepare($SQL);
+		$stmt->execute([
+			':id' => $id,
+			':title' => $post['title'],
+			':content' => $post['content']
+		]);
 	}
 
 	public function delete(int $id = null)
@@ -47,7 +73,7 @@ class News extends Model
 			= 'INSERT INTO news (title, content, user_id) VALUES (:title, :content, :user_id)';
 		$stmt = $this->db->prepare($SQL);
 		$stmt->execute([
-			':title' => $post['title'],
+			':title'   => $post['title'],
 			':content' => $post['content'],
 			':user_id' => App::getUserId(),
 		]);

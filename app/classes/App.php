@@ -10,7 +10,6 @@
 namespace Marten\classes;
 
 
-
 use Marten\classes\controllers\CartController;
 use Marten\classes\controllers\ContactController;
 use Marten\classes\controllers\HomeController;
@@ -83,6 +82,9 @@ class App
 				$news->run();
 				$this->content['news'] = $news->requestNews();
 
+				if (!empty($news->content)) {
+					$this->content['edit'] = $news->content;
+				}
 				break;
 
 			case 'home':

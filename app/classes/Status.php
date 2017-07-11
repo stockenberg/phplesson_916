@@ -15,8 +15,9 @@ class Status implements StatusInterface
 
 	public static function read(String $key = null): String
 	{
+
 		if (!is_null($key)) {
-			if (in_array($key, self::$status)) {
+			if (array_key_exists($key, self::$status)) {
 				return self::$status[$key];
 			}
 		}

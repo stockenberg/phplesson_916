@@ -10,71 +10,86 @@
 namespace Marten\classes\controllers;
 
 use Marten\classes\models\News;
+use Marten\classes\Status;
 
 class NewsController
 {
 
-    private $status = [];
+	public $content;
 
-    public function run()
-    {
-        switch ($_GET['action'] ?? ''){
-            case 'insert':
 
-                if($this->validateNews($_POST)){
-                    $news = new News();
-                    $news->save($_POST);
+	public function run()
+	{
+		switch ($_GET['action'] ?? '') {
+			case 'insert':
 
-                    header('Location: ?p=news-edit');
-                    exit();
-                }
+				if ($this->validateNews($_POST)) {
+					$news = new News();
+					$news->save($_POST);
 
-                break;
+					header('Location: ?p=news-edit');
+					exit();
+				}
+
+				break;
+
+			case 'update':
+				// reach me...
+				// validate input
+				// call model method updateNews
+				break;
+
+			case 'edit':
+
+				$news = new News();
+				$this->content = $news->getNewsById($_GET['edit']);
+
+				break;
 
 			case 'delete':
 
 				$news = new News();
-				if($news->delete($_GET['delete'])){
+				if ($news->delete($_GET['delete'])) {
 					header('Location: ?p=news-edit');
 					exit();
-				}else{
+				} else {
 					header('Location: ?p=news-edit&error');
 					exit();
 				}
 
 				break;
-        }
-    }
+		}
+	}
 
-    private function validateNews(array $post = []) : bool
-    {
+	private function validateNews(array $post = []): bool
+	{
 
-        if(isset($post['submit'])){
+		if (isset($post['submit'])) {
+			if ($post['title'] === '') {
+				Status::write('title', 'Bitte gib eine Überschrift ein.');
+			}
 
-            if($post['title'] === ''){
-                $this->status['title'] = 'Bitte gib eine Überschrift ein.';
-            }
+			if ($post['content'] === '') {
+				Status::write('content', 'Bitte gib einen Text ein.');
 
-            if($post['content'] === ''){
-                $this->status['content'] = 'Bitte gib einen Text ein.';
-            }
+			}
 
-            if(empty($this->status)){
+			if (Status::empty()) {
 
+				return true;
 
-                return true;
+			}
 
-            }
+		}
 
-        }
+		return false;
+	}
 
-        return false;
-    }
+	public function requestNews(): array
+	{
+		$news = new News();
 
-    public function requestNews() : array
-    {
-        $news = new News();
-        return $news->getNews();
-    }
+		return $news->getNews();
+	}
 
 }
