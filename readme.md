@@ -1,7 +1,7 @@
 # Heute
-- Login Logout
-- Rechtestufen Implementieren
-- Static methods
+- Git Grundlagen
+- Vervollständigung der News Funktionalität
+- Composer Grundlagen
 
 -------
 ## 04.07.17
