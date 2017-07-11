@@ -49,11 +49,11 @@ class NewsController
 
         if(isset($post['submit'])){
 
-            if($post['title'] == ''){
+            if($post['title'] === ''){
                 $this->status['title'] = 'Bitte gib eine Überschrift ein.';
             }
 
-            if($post['content'] == ''){
+            if($post['content'] === ''){
                 $this->status['content'] = 'Bitte gib einen Text ein.';
             }
 
