@@ -2,15 +2,16 @@
 session_name('phplesson');
 session_start();
 
+include __DIR__.'/config.php';
+require_once "autoload.php";
+
 /*
  * GIT Example - changed major stuff!!
  */
 
-include __DIR__.'/config.php';
-include __DIR__ . '/classes/App.php';
 
 
-$app = new App();
+$app = new \app\classes\App();
 $app->boot();
 
 echo "<pre>";

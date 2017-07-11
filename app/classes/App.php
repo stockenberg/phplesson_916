@@ -6,15 +6,8 @@
  * Date: 20.06.17
  * Time: 16:05
  */
-include CLASSES.'models/Model.php';
-include CLASSES.'Auth.php';
-include CLASSES.'GETValidator.php';
-include CLASSES.'controllers/CartController.php';
-include CLASSES.'controllers/HomeController.php';
-include CLASSES.'controllers/ContactController.php';
-include CLASSES.'controllers/LoginController.php';
-include CLASSES.'controllers/NewsController.php';
-include CLASSES.'controllers/OrderController.php';
+
+namespace app\classes;
 
 class App
 {

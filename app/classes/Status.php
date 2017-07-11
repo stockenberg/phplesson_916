@@ -6,6 +6,7 @@
  * Date: 11.07.17
  * Time: 17:33
  */
+
 class Status implements StatusInterface
 {
 	private static $status = [];
