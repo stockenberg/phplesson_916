@@ -2,6 +2,7 @@
 - Git Grundlagen
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
+- weiterer Menupunkt
 
 -------
 ## 04.07.17
