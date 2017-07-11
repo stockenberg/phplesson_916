@@ -1,5 +1,13 @@
 # Heute
 - Git Grundlagen
+    - Github Client
+        - https://desktop.github.com/
+    - Github - Terminal
+        - git clone https://github.com/stockenberg/phplesson_916.git
+        - git pull - to get newest version
+        - git add -A - adds all edited file to tree
+        - git commit -m "my commit message"
+        - git push - send it to repo
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
 - weiterer Menupunkt
