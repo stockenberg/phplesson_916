@@ -8,6 +8,9 @@
         - **git add -A** - adds all edited file to tree
         - **git commit -m "my commit message"**
         - **git push** - send it to repo
+        - ####NOTBREMSE
+        - **git reset** --hard HEAD
+        - **git pull**
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
 ------------------------
