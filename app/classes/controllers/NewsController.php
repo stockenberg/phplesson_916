@@ -28,6 +28,19 @@ class NewsController
                 }
 
                 break;
+
+			case 'delete':
+
+				$news = new News();
+				if($news->delete($_GET['delete'])){
+					header('Location: ?p=news-edit');
+					exit();
+				}else{
+					header('Location: ?p=news-edit&error');
+					exit();
+				}
+
+				break;
         }
     }
 
