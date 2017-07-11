@@ -2,6 +2,10 @@
 session_name('phplesson');
 session_start();
 
+/*
+ * GIT Example - changed major stuff!!
+ */
+
 include __DIR__.'/config.php';
 include __DIR__ . '/classes/App.php';
 
