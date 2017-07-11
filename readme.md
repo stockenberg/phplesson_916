@@ -14,6 +14,7 @@ https://git-scm.com/downloads
         - **git pull**
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
+    - **php composer.phar update**
 ------------------------
 
 ## 11.07.17
