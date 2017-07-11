@@ -2,7 +2,7 @@
 session_name('phplesson');
 session_start();
 
-include __DIR__.'/config.sample.php';
+include __DIR__.'/config.php';
 include __DIR__ . '/classes/App.php';
 
 
