@@ -8,7 +8,7 @@
 			<?php foreach ($app->content['news'] as $index => $news)  : ?>
 			<div class="col-md-4 col-sm-6 item">
 				<a href="#">
-					<img src="assets/img/<?= $news['img'] ?>" class="img-responsive" />
+					<img src="assets/img/<?= $news['img'] ?? 'desk.jpg' ?>" class="img-responsive" />
 				</a>
 				<h3 class="name">
 					<?php echo $news['title'] ?>

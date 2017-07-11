@@ -56,6 +56,11 @@ class App
 	}
 
 
+	public static function getUserRole()
+	{
+		return $_SESSION['user']['role'] ?? 0;
+	}
+
 	/**
 	 * Application Boot and Request Routing
 	 */
@@ -69,7 +74,7 @@ class App
 		switch ($this->page) {
 			case 'news-edit':
 
-				Auth::allow($_SESSION['user']['id'] ?? 0, [ADMIN]);
+				Auth::allow(App::getUserRole(), [ADMIN, AUTHOR]);
 
 				$news = new NewsController();
 				$news->run();

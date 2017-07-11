@@ -9,6 +9,8 @@
             <th>Content</th>
             <th>Created_at</th>
             <th>Updated_at</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
 
@@ -21,6 +23,8 @@
                 <td><?= $news['content'] ?></td>
                 <td><?= date('d.m.Y H:i', strtotime($news['created_at'])) ?> Uhr</td>
                 <td><?= date('d.m.Y H:i', strtotime($news['updated_at'])) ?> Uhr</td>
+                <td><a href="" class="btn btn-warning">Edit</a></td>
+                <td><a href="?p=news-edit&action=delete&delete=ID_VOM_ARTIKEL" class="btn btn-danger">Delete</a></td>
             </tr>
         <?php endforeach; ?>
 
