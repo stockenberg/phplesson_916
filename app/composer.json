@@ -1,0 +1,10 @@
+{
+    "name": "root/app",
+    "authors": [
+        {
+            "name": "stockenberg",
+            "email": "MStockenberg@googlemail.com"
+        }
+    ],
+    "require": {}
+}

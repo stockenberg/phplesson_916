@@ -16,8 +16,8 @@ class Status implements StatusInterface
 			if (in_array($key, self::$status)) {
 				return self::$status[$key];
 			}
-			return '';
 		}
+		return '';
 	}
 
 	public static function write(String $key = null, String $value = null): void
