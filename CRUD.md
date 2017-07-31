@@ -71,7 +71,30 @@
     - HTML Template
         - $app->content['pageContent']
             - Foreach
-                    
+
+##Delete
+- Wir haben:
+    - Daten in DB
+    - HTML Template
+        - Tabelle mit Daten
+        - Formular
+    - PageController
+        - Cases
+            - Delete
+- Wir Brauchen:
+    - DeleteButton
+        - href
+            - p=xy-edit
+            - action=delete
+            - id=ID Aus Datenbank
+                - Schleife aus dem DBArray
+    - Model
+        - delete(int $id = NULL) : void
+            - $SQL Statement
+                DELETE FROM table WHERE id = :ID
+    - redirect auf xy-edit
+        - header('Location: ?p=xy');
+        - exit()
                 
                 
         

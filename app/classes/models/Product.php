@@ -30,5 +30,21 @@ class Product extends Model
 		);
 	}
 
+	public function getProducts() : array
+	{
+		$SQL = 'SELECT * FROM products';
+		$stmt = $this->db->prepare($SQL);
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function delete(int $id = NULL) : void
+	{
+		$SQL = 'DELETE FROM products WHERE id = :id';
+		$stmt = $this->db->prepare($SQL);
+		$stmt->execute([':id' => $id]);
+	}
+
 
 }

@@ -92,6 +92,8 @@ class App
 			case 'products-edit':
 				$product = new ProductController();
 				$product->run();
+
+				$this->content['products'] = $product->requestProducts();
 				break;
 
 			case 'home':

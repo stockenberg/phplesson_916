@@ -40,11 +40,23 @@ class ProductController
 				break;
 
 			case 'delete':
+					if(isset($_GET['delete'])){
+						$product = new Product();
+						$product->delete($_GET['delete']);
 
+						header('Location: ?p=products-edit');
+						exit();
+					}
 				break;
 
 		}
 
+	}
+
+	public function requestProducts() : array
+	{
+		$products = new Product();
+		return $products->getProducts();
 	}
 
 

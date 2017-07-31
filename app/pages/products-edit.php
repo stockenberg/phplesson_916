@@ -1,7 +1,8 @@
 <div class="container">
 
     <div class="row">
-        <table>
+        <h3>Products</h3>
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
@@ -10,13 +11,23 @@
                 <th>Price</th>
                 <th>Img</th>
                 <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
+                <?php foreach ($app->content['products'] as $index => $product) :?>
                 <tr>
-                    <td></td>
-                    <!-- more... -->
+                    <td><?= $product['id'] ?></td>
+                    <td><?= $product['name'] ?></td>
+                    <td><?= $product['amount'] ?></td>
+                    <td><?= $product['price'] ?></td>
+                    <td><?= $product['img'] ?></td>
+                    <td><?= $product['description'] ?></td>
+                    <td><a class="btn btn-warning" href="?p=products-edit&action=edit&edit=<?= $product['id'] ?>">Edit</a></td>
+                    <td><a class="btn btn-danger" href="?p=products-edit&action=delete&delete=<?= $product['id'] ?>">Delete</a></td>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -24,7 +35,7 @@
     <div class="row">
         <!-- TODO : Action war leer -->
         <form action="?p=products-edit&action=insert" method="post" role="form">
-            <legend>Proucts Edit</legend>
+            <legend>Products Edit</legend>
 
             <div class="form-group">
                 <label for="">Name</label>
