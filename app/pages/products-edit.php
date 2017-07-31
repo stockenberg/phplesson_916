@@ -22,7 +22,8 @@
     </div>
 
     <div class="row">
-        <form action="" method="post" role="form">
+        <!-- TODO : Action war leer -->
+        <form action="?p=products-edit&action=insert" method="post" role="form">
             <legend>Proucts Edit</legend>
 
             <div class="form-group">
@@ -57,7 +58,7 @@
 
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" name='submit' value="speichern" class="btn btn-primary">
         </form>
     </div>
 

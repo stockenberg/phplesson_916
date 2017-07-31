@@ -90,7 +90,8 @@ class App
 				break;
 
 			case 'products-edit':
-
+				$product = new ProductController();
+				$product->run();
 				break;
 
 			case 'home':
