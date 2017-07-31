@@ -94,6 +94,10 @@ class App
 				$product->run();
 
 				$this->content['products'] = $product->requestProducts();
+
+				if (!empty($product->content)) {
+					$this->content['edit'] = $product->content;
+				}
 				break;
 
 			case 'home':

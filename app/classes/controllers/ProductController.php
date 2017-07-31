@@ -15,6 +15,8 @@ use Marten\classes\Status;
 class ProductController
 {
 
+	public $content;
+
 	public function run()
 	{
 		if (isset($_GET['action'])) {
@@ -33,11 +35,8 @@ class ProductController
 				case 'edit':
 					if(isset($_GET['edit'])){
 						$products = new Product();
-						$result = $products->getProductById($_GET['edit']);
-						echo "<pre>";
-						    print_r($result);
-						echo "</pre>";
-						exit();
+						$this->content = $products->getProductById($_GET['edit']);
+
 					}
 						// TODO : PRINT Database results...
 					break;

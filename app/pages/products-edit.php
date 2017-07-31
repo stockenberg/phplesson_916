@@ -40,31 +40,39 @@
             <div class="form-group">
                 <label for="">Name</label>
                 <input type="text" class="form-control" name="name" id=""
-                       placeholder="Input...">
+                       placeholder="Input..."
+                    value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['name'] : ''?>"
+                >
             </div>
 
             <div class="form-group">
                 <label for="">Amount</label>
                 <input type="number" class="form-control" name="amount" id=""
-                       placeholder="Input...">
+                       placeholder="Input..."
+                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['amount'] : ''?>"
+                >
             </div>
 
             <div class="form-group">
                 <label for="">Price</label>
                 <input type="text" class="form-control" name="price" id=""
-                       placeholder="Input...">
+                       placeholder="Input..."
+                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['price'] : ''?>"
+                >
             </div>
 
             <div class="form-group">
                 <label for="">IMG</label>
                 <input type="file" class="form-control" name="img" id=""
-                       placeholder="Input...">
+                       placeholder="Input..."
+                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['img'] : ''?>"
+                >
             </div>
 
             <div class="form-group">
                 <label for="">Description</label>
                 <textarea class="form-control" name="description" id=""
-                          placeholder="Input..."></textarea>
+                          placeholder="Input..."><?= isset($app->content['edit']) ? $app->content['edit'][0]['description'] : ''?></textarea>
             </div>
 
 
