@@ -123,8 +123,13 @@
     - ###Schritt 1 
         - Klick auf den Edit Button
             - Hole Daten anhand der korrekten ID aus der DB
+            - Überführe die Daten in die App Klasse
             - Schreibe die Daten in das Formular in die Value-Felder
             - Tausche die Formaction gegen die Update Action wenn Daten vorhanden sind
+                - action
+                    p = xy-edit
+                    action = update
+                    update = XY_ID
         
     - ### Schritt 2
         - Klick auf Submit Button
@@ -132,7 +137,8 @@
             - Validierung der Edit-Daten
             - instanz von XYModel
                 - Aufruf der Update Funktion
-                    - $SQL = 'UPDATE table SET col = :value WHERE id = :id'
+                    - Übergabe Post-Array und ID
+                    - $SQL = 'UPDATE table SET col1 = :value1, col2 = :value2 WHERE id = :id'
                     
                     
                 

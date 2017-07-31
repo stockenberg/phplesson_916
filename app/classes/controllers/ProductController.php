@@ -43,7 +43,13 @@ class ProductController
 
 
 				case 'update':
+					if ($this->validate($_POST)) {
+						$products = new Product();
+						$products->update($_POST, $_GET['update']);
 
+						header('Location: ?p=products-edit');
+						exit();
+					}
 					break;
 
 				case 'delete':
