@@ -35,7 +35,9 @@
     <div class="row">
         <!-- TODO : Action war leer -->
         <form action="<?= isset($app->content['edit']) ? '?p=products-edit&action=update&update=' . $app->content['edit'][0]['id'] : '?p=products-edit&action=insert' ?>" method="post" role="form">
-            <legend>Products Edit</legend>
+            <legend>Products Edit <br>
+            action: <?= isset($app->content['edit']) ? '?p=products-edit&action=update&update=' . $app->content['edit'][0]['id'] : '?p=products-edit&action=insert' ?>
+            </legend>
 
             <div class="form-group">
                 <label for="">Name</label>
