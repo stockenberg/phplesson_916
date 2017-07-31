@@ -17,45 +17,46 @@ class ProductController
 
 	public function run()
 	{
+		if (isset($_GET['action'])) {
+			switch ($_GET['action']) {
 
-		switch ($_GET['action']) {
+				case 'insert':
+					if ($this->validate($_POST)) {
+						$products = new Product();
+						$products->save($_POST);
 
-			case 'insert':
-				if ($this->validate($_POST)) {
-					$products = new Product();
-					$products->save($_POST);
+						header('Location: ?p=products-edit');
+						exit();
+					}
+					break;
 
-					header('Location: ?p=products-edit');
-					exit();
-				}
-				break;
+				case 'edit':
 
-			case 'edit':
-
-				break;
+					break;
 
 
-			case 'update':
+				case 'update':
 
-				break;
+					break;
 
-			case 'delete':
-					if(isset($_GET['delete'])){
+				case 'delete':
+					if (isset($_GET['delete'])) {
 						$product = new Product();
 						$product->delete($_GET['delete']);
 
 						header('Location: ?p=products-edit');
 						exit();
 					}
-				break;
+					break;
 
+			}
 		}
-
 	}
 
-	public function requestProducts() : array
+	public function requestProducts(): array
 	{
 		$products = new Product();
+
 		return $products->getProducts();
 	}
 
@@ -84,6 +85,7 @@ class ProductController
 			if (Status::empty()) {
 				return true;
 			}
+
 			return false;
 		}
 
