@@ -48,8 +48,11 @@ $app->boot();
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li role="presentation"><a href="?p=home">Startseite</a>
-                    </li>
+                    <li role="presentation"><a href="?p=home">Startseite</a></li>
+                    <li role="presentation"><a href="">Shop</a></li>
+                    <li role="presentation"><a href="">Warenkorb</a></li>
+                    <li role="presentation"><a href="">Impressum</a></li>
+                    <li role="presentation"><a href="">Datenschutz</a></li>
 
 					<?php if (!isset($_SESSION['user']['id'])) : ?>
 
@@ -58,25 +61,27 @@ $app->boot();
 
 					<?php else: ?>
 
+
+
+                        <li class="dropdown"><a data-toggle="dropdown"
+                                                aria-expanded="false" href="#"
+                                                class="dropdown-toggle">Admin
+                                <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li role="presentation"><a href="?p=news-edit">News</a></li>
+                                <li role="presentation"><a href="">Produkte</a></li>
+                                <li role="presentation"><a href="">Bestellungen</a></li>
+                                <li role="presentation"><a href="">Kunden</a></li>
+                            </ul>
+                        </li>
                         <li role="presentation"><a
                                     href="?action=logout">Logout</a></li>
 
 					<?php endif; ?>
 
-                    <li role="presentation"><a href="#">Third Item</a></li>
-                    <li class="dropdown"><a data-toggle="dropdown"
-                                            aria-expanded="false" href="#"
-                                            class="dropdown-toggle">Dropdown
-                            <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li role="presentation"><a href="#">First Item</a>
-                            </li>
-                            <li role="presentation"><a href="#">Second Item</a>
-                            </li>
-                            <li role="presentation"><a href="#">Third Item</a>
-                            </li>
-                        </ul>
-                    </li>
+
+
+
                 </ul>
             </div>
         </div>

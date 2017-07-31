@@ -1,4 +1,13 @@
 # Heute
+- Überblick über das Programm
+- Wiederholung Namespaces
+- Wiederholung Autoloading
+- Kontaktformular mit E-Mail Versand
+- Anpassen der Navigation mit allen Backend-Punkten
+
+------------------------
+
+## 11.07.17
 https://git-scm.com/downloads
 - Git Grundlagen
     - Github Client
@@ -14,21 +23,7 @@ https://git-scm.com/downloads
         - **git pull**
 - Vervollständigung der News Funktionalität
 - Composer Grundlagen
-    - **php composer.phar update**
-------------------------
-
-## 11.07.17
-- Git Grundlagen
-    - Github Client
-        - https://desktop.github.com/
-    - Github - Terminal
-        - git clone https://github.com/stockenberg/phplesson_916.git
-        - **git pull** - to get newest version
-        - **git add -A** - adds all edited file to tree
-        - **git commit -m "my commit message"**
-        - **git push** - send it to repo
-- Vervollständigung der News Funktionalität
-- Composer Grundlagen
+    - **php composer.phar update**- Composer Grundlagen
 
 ## 04.07.17
 - Login Logout

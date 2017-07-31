@@ -24,6 +24,11 @@
     min-height:1em;
 }
 
+a[href=""]{
+    color: red !important;
+    font-weight: bold;
+}
+
 .login-card .form-signin input[type=email], .login-card .form-signin input[type=password], .login-card .form-signin input[type=text], .login-card .form-signin button {
     height:44px;
     font-size:16px;

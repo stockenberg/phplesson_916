@@ -36,7 +36,7 @@
 
     <div class="row">
         <!--  -->
-        <form action="?p=news-edit&action=insert" method="post">
+        <form action="<?= isset($_GET['action']) && $_GET['action'] === 'edit' ? '?p=news-edit&action=update&update=' . $app->content['edit'][0]['id'] : '?p=news-edit&action=insert' ?>" method="post">
 
             <div class="form-group">
 

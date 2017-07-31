@@ -34,10 +34,13 @@ class NewsController
 				break;
 
 			case 'update':
-				// reach me...
-				// validate input
-				// call model method updateNews
-				// $news->update($_POST, $_GET['update']);
+				if($this->validateNews($_POST)){
+					$news = new News();
+					$news->updateNews($_POST, $_GET['update']);
+
+					header('Location: ?p=news-edit');
+					exit();
+				}
 				break;
 
 			case 'edit':
