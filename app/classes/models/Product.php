@@ -30,6 +30,18 @@ class Product extends Model
 		);
 	}
 
+	public function getProductById(int $id = NULL) : array
+	{
+		$SQL = 'SELECT * FROM products WHERE id = :id';
+		$stmt = $this->db->prepare($SQL);
+
+		$stmt->execute(
+			[':id' => $id]
+		);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 	public function getProducts() : array
 	{
 		$SQL = 'SELECT * FROM products';

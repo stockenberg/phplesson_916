@@ -95,6 +95,45 @@
     - redirect auf xy-edit
         - header('Location: ?p=xy');
         - exit()
+        
+        
+##Edit
+- Wir haben:
+    - Formular
+    - Daten
+    - HTML Template
+    - PageController - Edit-Case
+    - PageController - UpdateCase
+
+- Wir Brauchen:
+    - Button
+        - href
+            p = xy-edit
+            action = edit
+            id = XY_ID
+            
+    - Formaction
+        - wir müssen insert gegen edit tauschen
+            - pfad
+                p = xy-edit
+                action = update
+                id = XY_ID
                 
+- Ablauf:
+    - ###Schritt 1 
+        - Klick auf den Edit Button
+            - Hole Daten anhand der korrekten ID aus der DB
+            - Schreibe die Daten in das Formular in die Value-Felder
+            - Tausche die Formaction gegen die Update Action wenn Daten vorhanden sind
+        
+    - ### Schritt 2
+        - Klick auf Submit Button
+        - PageController
+            - Validierung der Edit-Daten
+            - instanz von XYModel
+                - Aufruf der Update Funktion
+                    - $SQL = 'UPDATE table SET col = :value WHERE id = :id'
+                    
+                    
                 
         

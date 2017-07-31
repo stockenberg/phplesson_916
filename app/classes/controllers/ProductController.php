@@ -31,7 +31,15 @@ class ProductController
 					break;
 
 				case 'edit':
-
+					if(isset($_GET['edit'])){
+						$products = new Product();
+						$result = $products->getProductById($_GET['edit']);
+						echo "<pre>";
+						    print_r($result);
+						echo "</pre>";
+						exit();
+					}
+						// TODO : PRINT Database results...
 					break;
 
 

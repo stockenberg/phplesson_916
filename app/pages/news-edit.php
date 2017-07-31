@@ -16,18 +16,24 @@
 
         <tbody>
 
-        <?php foreach ($app->content['news'] as $index => $news) : ?>
+		<?php foreach ($app->content['news'] as $index => $news) : ?>
             <tr>
                 <td><?= $news['id'] ?></td>
                 <td><?= $news['title'] ?></td>
                 <td><?= $news['content'] ?></td>
-                <td><?= date('d.m.Y H:i', strtotime($news['created_at'])) ?> Uhr</td>
-                <td><?= date('d.m.Y H:i', strtotime($news['updated_at'])) ?> Uhr</td>
-                <td><a href="?p=news-edit&action=edit&edit=<?= $news['id'] ?>" class="btn btn-warning">Edit</a></td>
-                <td><a href="?p=news-edit&action=delete&delete=<?= $news['id'] ?>" class="btn btn-danger">Delete</a></td>
+                <td><?= date('d.m.Y H:i', strtotime($news['created_at'])) ?>
+                    Uhr
+                </td>
+                <td><?= date('d.m.Y H:i', strtotime($news['updated_at'])) ?>
+                    Uhr
+                </td>
+                <td><a href="?p=news-edit&action=edit&edit=<?= $news['id'] ?>"
+                       class="btn btn-warning">Edit</a></td>
+                <td>
+                    <a href="?p=news-edit&action=delete&delete=<?= $news['id'] ?>"
+                       class="btn btn-danger">Delete</a></td>
             </tr>
-        <?php endforeach; ?>
-
+		<?php endforeach; ?>
 
 
         </tbody>
@@ -37,20 +43,21 @@
     <div class="row">
         <!--  -->
         <form action="<?=
-        isset($_GET['action']) && $_GET['action'] === 'edit'
-            ? '?p=news-edit&action=update&update=' . $app->content['edit'][0]['id']
-            : '?p=news-edit&action=insert' ?>" method="post">
+		isset($_GET['action']) && $_GET['action'] === 'edit'
+			? '?p=news-edit&action=update&update='
+			.$app->content['edit'][0]['id']
+			: '?p=news-edit&action=insert' ?>" method="post">
 
             <div class="form-group">
 
                 <label for="">Title</label>
                 <input type="text" class="form-control"
                        value="<?=
-                       isset($app->content['edit'][0]['title']) && $app->content['edit'][0]['title'] !== ''
-                           ? $app->content['edit'][0]['title'] : '' ?>"
+					   isset($app->content['edit'][0]['title'])
+						   ? $app->content['edit'][0]['title'] : '' ?>"
                        name="title">
                 <p class="text-danger">
-                    <?= \Marten\classes\Status::read('title') ?>
+					<?= \Marten\classes\Status::read('title') ?>
                 </p>
 
             </div>
@@ -59,16 +66,18 @@
 
                 <label for="">Text</label>
                 <textarea class="form-control" name="content"><?=
-					isset($app->content['edit'][0]['content']) && $app->content['edit'][0]['content'] !== ''
-                        ? $app->content['edit'][0]['content'] : ''
-                    ?></textarea>
+					isset($app->content['edit'][0]['content'])
+					&& $app->content['edit'][0]['content'] !== ''
+						? $app->content['edit'][0]['content'] : ''
+					?></textarea>
                 <p class="text-danger">
-                    <?= \Marten\classes\Status::read('content') ?>
+					<?= \Marten\classes\Status::read('content') ?>
                 </p>
 
             </div>
 
-            <input type="submit" name="submit" value="Speichern" class="btn btn-success">
+            <input type="submit" name="submit" value="Speichern"
+                   class="btn btn-success">
 
         </form>
 
