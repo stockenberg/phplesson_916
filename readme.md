@@ -3,9 +3,15 @@
 - Wiederholung Namespaces
 - Wiederholung Autoloading
 - Kontaktformular mit E-Mail Versand
-- Anpassen der Navigation mit allen Backend-Punkten
-
+- Produktverwaltung und Warenkorb
 ------------------------
+
+## 31.07.17
+- Überblick über das Programm
+- Wiederholung Namespaces
+- Wiederholung Autoloading
+- Kontaktformular mit E-Mail Versand
+- Produktverwaltung und Warenkorb
 
 ## 11.07.17
 https://git-scm.com/downloads
