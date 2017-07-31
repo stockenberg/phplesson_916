@@ -36,13 +36,18 @@
 
     <div class="row">
         <!--  -->
-        <form action="<?= isset($_GET['action']) && $_GET['action'] === 'edit' ? '?p=news-edit&action=update&update=' . $app->content['edit'][0]['id'] : '?p=news-edit&action=insert' ?>" method="post">
+        <form action="<?=
+        isset($_GET['action']) && $_GET['action'] === 'edit'
+            ? '?p=news-edit&action=update&update=' . $app->content['edit'][0]['id']
+            : '?p=news-edit&action=insert' ?>" method="post">
 
             <div class="form-group">
 
                 <label for="">Title</label>
                 <input type="text" class="form-control"
-                       value="<?= $app->content['edit'][0]['title'] !== '' ? $app->content['edit'][0]['title'] : '' ?>"
+                       value="<?=
+                       isset($app->content['edit'][0]['title']) && $app->content['edit'][0]['title'] !== ''
+                           ? $app->content['edit'][0]['title'] : '' ?>"
                        name="title">
                 <p class="text-danger">
                     <?= \Marten\classes\Status::read('title') ?>
@@ -54,7 +59,8 @@
 
                 <label for="">Text</label>
                 <textarea class="form-control" name="content"><?=
-					$app->content['edit'][0]['content'] !== '' ? $app->content['edit'][0]['content'] : ''
+					isset($app->content['edit'][0]['content']) && $app->content['edit'][0]['content'] !== ''
+                        ? $app->content['edit'][0]['content'] : ''
                     ?></textarea>
                 <p class="text-danger">
                     <?= \Marten\classes\Status::read('content') ?>

@@ -4,6 +4,15 @@
 - Wiederholung Autoloading
 - Kontaktformular mit E-Mail Versand
 - Produktverwaltung und Warenkorb
+
+# TODO
+- Bestellvorgang
+- Statusverwaltung
+- Kundenverwaltung
+- Kontaktformular mit Auswertung
+- Upload / Edit News Images
+- Produktverwaltung
+- Implementierung Datenschutz und Impressum
 ------------------------
 
 ## 31.07.17
@@ -28,6 +37,9 @@ https://git-scm.com/downloads
         - **git reset** --hard HEAD
         - **git pull**
 - Vervollständigung der News Funktionalität
+- Namespaces
+- Autoloading Grundlagen
+- PSR4-Autoloading
 - Composer Grundlagen
     - **php composer.phar update**- Composer Grundlagen
 

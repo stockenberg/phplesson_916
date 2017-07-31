@@ -26,6 +26,7 @@ class App
 	public $whitelist
 		= [
 			'news-edit',
+			'products-edit',
 			'home',
 			'news',
 			'products',
@@ -82,9 +83,14 @@ class App
 				$news->run();
 				$this->content['news'] = $news->requestNews();
 
+				// if not empty, we pressed the edit button and loaded news by id from database
 				if (!empty($news->content)) {
 					$this->content['edit'] = $news->content;
 				}
+				break;
+
+			case 'products-edit':
+
 				break;
 
 			case 'home':

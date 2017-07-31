@@ -69,8 +69,9 @@ $app->boot();
                                 <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li role="presentation"><a href="?p=news-edit">News</a></li>
-                                <li role="presentation"><a href="">Produkte</a></li>
+                                <li role="presentation"><a href="?p=products-edit">Produkte</a></li>
                                 <li role="presentation"><a href="">Bestellungen</a></li>
+                                <li role="presentation"><a href="">Statusverwaltung</a></li>
                                 <li role="presentation"><a href="">Kunden</a></li>
                             </ul>
                         </li>
