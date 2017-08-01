@@ -26,7 +26,7 @@ class CartController
 
 				case 'update_amount':
 					if(!empty($_POST)){
-						$_SESSION['cart'][$_GET['id']] = $_POST['amount'];
+						$_SESSION['cart'][$_GET['id']] = str_replace('-', '', $_POST['amount']);
 						App::redirectTo('cart');
 					}
 					break;

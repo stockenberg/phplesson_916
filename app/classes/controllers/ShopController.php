@@ -9,6 +9,8 @@
 namespace Marten\classes\controllers;
 
 
+use Marten\classes\App;
+
 class ShopController
 {
 
@@ -18,9 +20,8 @@ class ShopController
 			switch ($_GET['action']){
 				case 'add_to_cart':
 						if(!empty($_POST)){
-							$_SESSION['cart'][$_POST['id']] = $_POST['amount'];
-							header('Location: ?p=shop');
-							exit();
+							$_SESSION['cart'][$_POST['id']] = str_replace('-', '', $_POST['amount']);
+							App::redirectTo('cart');
 						}
 					break;
 			}

@@ -29,7 +29,7 @@
                     <td><?= $product['description'] ?></td>
                     <td>
                         <form action="?p=cart&action=update_amount&id=<?= $product['id'] ?>" method="post">
-                            <input type="number" name="amount"
+                            <input type="number" min="0" name="amount"
                                    value="<?= $product['amount'] ?>" id="">
                             <button type="submit">
                                 <i class="glyphicon glyphicon-refresh"></i>

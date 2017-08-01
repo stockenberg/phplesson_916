@@ -21,7 +21,7 @@
 						<?= $products['description'] ?>
                     </p>
                     <form action="?p=shop&action=add_to_cart" method="post">
-                        <input type="number" name="amount" id="amount">
+                        <input type="number" min="0" max="<?= $products['amount'] ?>" name="amount" id="amount">
                         <input type="hidden" name="id" value="<?= $products['id'] ?>">
                         <button type="submit">
                             <i class="glyphicon glyphicon-shopping-cart"></i>
