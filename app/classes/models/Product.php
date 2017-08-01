@@ -13,7 +13,7 @@ class Product extends Model
 {
 
 
-	public function save(array $post = NULL)
+	public function save(array $post = NULL, string $filename = 'placeholder.jpg')
 	{
 		// TODO : Hausaufgabe definieren Dummy Anwendungsablauf
 		$SQL = 'INSERT INTO products (name, amount, price, description, img) VALUES (:name, :amount, :price, :description, :img)';
@@ -25,7 +25,7 @@ class Product extends Model
 				':amount' => htmlentities(strip_tags($post['amount'])),
 				':price' => htmlentities(strip_tags($post['price'])),
 				':description' => htmlentities(strip_tags($post['description'])),
-				':img' => 'test.jpg'
+				':img' => $filename
 			]
 		);
 	}

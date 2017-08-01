@@ -25,32 +25,18 @@ class ProductController
 			switch ($_GET['action']) {
 
 				case 'insert':
-					echo "<pre>";
-					    print_r($_POST);
-					echo "</pre>";
 
-					echo "<pre>";
-					    print_r($_FILES);
-					echo "</pre>";
-
-					if(!is_dir('uploads/img/products')){
-						mkdir('uploads/img/products/', 0777, true);
-					}
-					move_uploaded_file($_FILES['img']['tmp_name'], 'uploads/img/products/' . basename($_FILES['img']['name']));
-
-
-					exit();
-
-
-					/*
 					if ($this->validate($_POST)) {
 
-						$products = new Product();
-						$products->save($_POST);
+						if($this->uploadProductImage()){
+							$products = new Product();
+							$products->save($_POST, $_FILES['img']['name'] ?? NULL);
 
-						header('Location: ?p=products-edit');
-						exit();
-					}*/
+							header('Location: ?p=products-edit');
+							exit();
+						}
+
+					}
 					break;
 
 				case 'edit':
@@ -93,6 +79,19 @@ class ProductController
 		$products = new Product();
 
 		return $products->getProducts();
+	}
+
+
+	public function uploadProductImage()
+	{
+		if(!is_dir('uploads/img/products')){
+			mkdir('uploads/img/products/', 0777, true);
+		}
+
+		if(move_uploaded_file($_FILES['img']['tmp_name'], 'uploads/img/products/' . basename($_FILES['img']['name']))){
+			return true;
+		}
+		return false;
 	}
 
 
