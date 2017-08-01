@@ -25,7 +25,7 @@ class Product extends Model
 				':amount' => htmlentities(strip_tags($post['amount'])),
 				':price' => htmlentities(strip_tags($post['price'])),
 				':description' => htmlentities(strip_tags($post['description'])),
-				':img' => $filename
+				':img' => $filename !== '' ? $filename : 'placeholder.jpg'
 			]
 		);
 	}

@@ -17,10 +17,17 @@ use Marten\classes\controllers\LoginController;
 use Marten\classes\controllers\NewsController;
 use Marten\classes\controllers\OrderController;
 use Marten\classes\controllers\ProductController;
+use Marten\classes\controllers\ShopController;
 
 class App
 {
 
+	/*
+	 * Whitelist
+	 * cases
+	 * Instanz Products
+	 * $app->content['products']
+	 */
 	public $page;
 	public $content = [];
 	public $whitelist
@@ -35,6 +42,7 @@ class App
 			'order-overview',
 			'login',
 			'contact',
+			'shop'
 		];
 
 
@@ -103,6 +111,12 @@ class App
 				}
 				break;
 
+			case 'shop':
+				$this->content['products'] = (new ProductController())->requestProducts();
+				$shop = new ShopController();
+				$shop->run();
+				break;
+
 			case 'home':
 				$home = new HomeController();
 				$this->content['news'] = $home->requestNews();
@@ -114,6 +128,7 @@ class App
 
 			case 'cart':
 				$cart = new CartController();
+				$this->content['cart'] = $cart->getCartItems($_SESSION['cart']);
 				break;
 
 			case 'order-data':

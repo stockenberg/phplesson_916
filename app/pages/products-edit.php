@@ -22,7 +22,7 @@
                     <td><?= $product['name'] ?></td>
                     <td><?= $product['amount'] ?></td>
                     <td><?= $product['price'] ?></td>
-                    <td><?= $product['img'] ?></td>
+                    <td><img src="uploads/img/products/<?= $product['img'] ?>" height="50" alt=""></td>
                     <td><?= $product['description'] ?></td>
                     <td><a class="btn btn-warning" href="?p=products-edit&action=edit&edit=<?= $product['id'] ?>">Edit</a></td>
                     <td><a class="btn btn-danger" href="?p=products-edit&action=delete&delete=<?= $product['id'] ?>">Delete</a></td>
@@ -48,24 +48,27 @@
                 <label for="">Name</label>
                 <input type="text" class="form-control" name="name" id=""
                        placeholder="Input..."
-                    value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['name'] : ''?>"
+                    value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['name'] : @$_POST['name']?>"
                 >
+                <p class="error text-danger"><?= \Marten\classes\Status::read('name') ?></p>
             </div>
 
             <div class="form-group">
                 <label for="">Amount</label>
                 <input type="number" class="form-control" name="amount" id=""
                        placeholder="Input..."
-                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['amount'] : ''?>"
+                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['amount'] : @$_POST['amount']?>"
                 >
+                <p class="error text-danger"><?= \Marten\classes\Status::read('amount') ?></p>
             </div>
 
             <div class="form-group">
                 <label for="">Price</label>
                 <input type="text" class="form-control" name="price" id=""
                        placeholder="Input..."
-                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['price'] : ''?>"
+                       value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['price'] : @$_POST['price']?>"
                 >
+                <p class="error text-danger"><?= \Marten\classes\Status::read('price') ?></p>
             </div>
 
             <div class="form-group">
@@ -74,12 +77,14 @@
                        placeholder="Input..."
                        value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['img'] : ''?>"
                 >
+                <p class="error text-danger"><?= \Marten\classes\Status::read('img') ?></p>
             </div>
 
             <div class="form-group">
                 <label for="">Description</label>
                 <textarea class="form-control" name="description" id=""
-                          placeholder="Input..."><?= isset($app->content['edit']) ? $app->content['edit'][0]['description'] : ''?></textarea>
+                          placeholder="Input..."><?= isset($app->content['edit']) ? $app->content['edit'][0]['description'] : @$_POST['description']?></textarea>
+                <p class="error text-danger"><?= \Marten\classes\Status::read('description') ?></p>
             </div>
 
 

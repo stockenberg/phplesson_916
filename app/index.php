@@ -49,8 +49,12 @@ $app->boot();
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a href="?p=home">Startseite</a></li>
-                    <li role="presentation"><a href="">Shop</a></li>
-                    <li role="presentation"><a href="">Warenkorb</a></li>
+                    <li role="presentation"><a href="?p=shop">Shop</a></li>
+                    <li role="presentation"><a href="">Warenkorb
+                            (
+                            <?= isset($_SESSION['cart']) ? count($_SESSION['cart']) : "0" ?>
+                            )
+                        </a></li>
                     <li role="presentation"><a href="">Impressum</a></li>
                     <li role="presentation"><a href="">Datenschutz</a></li>
 

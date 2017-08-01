@@ -28,9 +28,10 @@ class ProductController
 
 					if ($this->validate($_POST)) {
 
-						if($this->uploadProductImage()){
+						if ($this->uploadProductImage()) {
 							$products = new Product();
-							$products->save($_POST, $_FILES['img']['name'] ?? NULL);
+							$products->save($_POST,
+								$_FILES['img']['name'] ?? null);
 
 							header('Location: ?p=products-edit');
 							exit();
@@ -40,12 +41,13 @@ class ProductController
 					break;
 
 				case 'edit':
-					if(isset($_GET['edit'])){
+					if (isset($_GET['edit'])) {
 						$products = new Product();
-						$this->content = $products->getProductById($_GET['edit']);
+						$this->content
+							= $products->getProductById($_GET['edit']);
 
 					}
-						// TODO : PRINT Database results...
+					// TODO : PRINT Database results...
 					break;
 
 
@@ -84,14 +86,30 @@ class ProductController
 
 	public function uploadProductImage()
 	{
-		if(!is_dir('uploads/img/products')){
-			mkdir('uploads/img/products/', 0777, true);
-		}
+		if ($_FILES['img']['error'] !== 4) {
 
-		if(move_uploaded_file($_FILES['img']['tmp_name'], 'uploads/img/products/' . basename($_FILES['img']['name']))){
-			return true;
+			if($_FILES['img']['error'] === 1){
+				Status::write('img', "Das Hochgeladene Bild ist zu groß");
+				return false;
+			}
+
+			if($_FILES['img']['error'] === 0) {
+				if (!is_dir('uploads/img/products')) {
+					mkdir('uploads/img/products/', 0777, true);
+				}
+
+				if (move_uploaded_file($_FILES['img']['tmp_name'],
+					'uploads/img/products/'.basename($_FILES['img']['name']))) {
+					return true;
+				}
+				Status::write('img', "Das Verschieben des Bildes hat nicht geklappt");
+				return false;
+			}
+			Status::write('img', "Upload Fehlerhaft, bitte support kontaktieren...");
+
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 
@@ -113,7 +131,7 @@ class ProductController
 			}
 
 			if ($post['description'] === '') {
-				Status::write('description', 'Bitte Namen ausfüllen');
+				Status::write('description', 'Bitte Beschreibung ausfüllen');
 			}
 
 			if (Status::empty()) {
