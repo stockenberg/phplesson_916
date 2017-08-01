@@ -9,6 +9,8 @@
 
 namespace Marten\classes\controllers;
 
+use Marten\classes\App;
+use Marten\classes\Auth;
 use Marten\classes\models\Product;
 use Marten\classes\Status;
 
@@ -23,13 +25,32 @@ class ProductController
 			switch ($_GET['action']) {
 
 				case 'insert':
+					echo "<pre>";
+					    print_r($_POST);
+					echo "</pre>";
+
+					echo "<pre>";
+					    print_r($_FILES);
+					echo "</pre>";
+
+					if(!is_dir('uploads/img/products')){
+						mkdir('uploads/img/products/', 0777, true);
+					}
+					move_uploaded_file($_FILES['img']['tmp_name'], 'uploads/img/products/' . basename($_FILES['img']['name']));
+
+
+					exit();
+
+
+					/*
 					if ($this->validate($_POST)) {
+
 						$products = new Product();
 						$products->save($_POST);
 
 						header('Location: ?p=products-edit');
 						exit();
-					}
+					}*/
 					break;
 
 				case 'edit':
@@ -53,6 +74,7 @@ class ProductController
 					break;
 
 				case 'delete':
+					Auth::deny(App::getUserRole(), [AUTHOR]);
 					if (isset($_GET['delete'])) {
 						$product = new Product();
 						$product->delete($_GET['delete']);

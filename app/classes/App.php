@@ -90,6 +90,9 @@ class App
 				break;
 
 			case 'products-edit':
+
+				Auth::allow(App::getUserRole(), [ADMIN, AUTHOR]);
+
 				$product = new ProductController();
 				$product->run();
 

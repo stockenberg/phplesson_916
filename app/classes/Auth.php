@@ -24,7 +24,7 @@ class Auth
     {
 
         if (in_array($user_id, $groups)) {
-            header('Location: ' . self::$location);
+            header('Location: ?p=' . $_GET['p']);
             exit();
         } else {
             return true;

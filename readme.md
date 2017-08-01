@@ -1,9 +1,8 @@
 # Heute
-- Überblick über das Programm
-- Wiederholung Namespaces
-- Wiederholung Autoloading
 - Kontaktformular mit E-Mail Versand
-- Produktverwaltung und Warenkorb
+- Image Upload für Produktbilder
+- Produktübersicht und Warenkorb
+- Bestellvorgang
 
 # TODO
 - Bestellvorgang
@@ -19,8 +18,7 @@
 - Überblick über das Programm
 - Wiederholung Namespaces
 - Wiederholung Autoloading
-- Kontaktformular mit E-Mail Versand
-- Produktverwaltung und Warenkorb
+- Produktverwaltung
 
 ## 11.07.17
 https://git-scm.com/downloads
