@@ -16,7 +16,7 @@
 			<?php
             $total = 0;
             foreach ($app->content['cart'] as $index => $product) :
-                $total += $product['price'] * $product['amount'];
+                $total += $product['price'] * $product['ordered_amount'];
                 ?>
 
                 <tr class="text-center">
@@ -29,15 +29,15 @@
                     <td><?= $product['description'] ?></td>
                     <td>
                         <form action="?p=cart&action=update_amount&id=<?= $product['id'] ?>" method="post">
-                            <input type="number" min="0" name="amount"
-                                   value="<?= $product['amount'] ?>" id="">
+                            <input type="number" min="0" max="<?= $product['amount'] ?>" name="amount"
+                                   value="<?= $product['ordered_amount'] ?>" id="">
                             <button type="submit">
                                 <i class="glyphicon glyphicon-refresh"></i>
                             </button>
                         </form>
                     </td>
                     <td><?= number_format(
-                            $product['price'] * $product['amount'],
+                            $product['price'] * $product['ordered_amount'],
                             2,
                             ',',
                             '.'

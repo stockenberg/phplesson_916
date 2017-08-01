@@ -45,7 +45,7 @@ class CartController
 			$thisProduct = $product->getProductById($productId)[0];
 
 			$result[$counter] = $thisProduct;
-			$result[$counter]['amount'] = $amount;
+			$result[$counter]['ordered_amount'] = $amount;
 
 			$counter++;
 		}
