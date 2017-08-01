@@ -8,10 +8,31 @@
  */
 namespace Marten\classes\controllers;
 
+use Marten\classes\App;
 use Marten\classes\models\Product;
 
 class CartController
 {
+
+
+	public function run()
+	{
+		if(isset($_GET['action'])){
+			switch ($_GET['action']){
+				case 'remove_from_cart':
+					unset($_SESSION['cart'][$_GET['id']]);
+					App::redirectTo('cart');
+					break;
+
+				case 'update_amount':
+					if(!empty($_POST)){
+						$_SESSION['cart'][$_GET['id']] = $_POST['amount'];
+						App::redirectTo('cart');
+					}
+					break;
+			}
+		}
+	}
 
 	public function getCartItems(array $cart = NULL) : array
 	{

@@ -50,7 +50,7 @@ $app->boot();
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a href="?p=home">Startseite</a></li>
                     <li role="presentation"><a href="?p=shop">Shop</a></li>
-                    <li role="presentation"><a href="">Warenkorb
+                    <li role="presentation"><a href="?p=cart">Warenkorb
                             (
                             <?= isset($_SESSION['cart']) ? count($_SESSION['cart']) : "0" ?>
                             )

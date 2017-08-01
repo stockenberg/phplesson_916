@@ -128,6 +128,7 @@ class App
 
 			case 'cart':
 				$cart = new CartController();
+				$cart->run();
 				$this->content['cart'] = $cart->getCartItems($_SESSION['cart']);
 				break;
 
@@ -160,6 +161,13 @@ class App
 			exit();
 		}
 
+	}
+
+
+	public static function redirectTo(string $page = 'home') : void
+	{
+		header('Location: ?p=' . $page);
+		exit();
 	}
 
 }
