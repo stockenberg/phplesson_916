@@ -1,8 +1,10 @@
 # Heute
-- Kontaktformular mit E-Mail Versand
-- Image Upload für Produktbilder
-- Produktübersicht und Warenkorb
-- Bestellvorgang
+- Hausaufgaben checken - Maximale Artikel in Datenbank
+- Bestellvorgang abschließen
+    - Mailversand an Admins
+    - Bestätigungsmail an den Kunden
+- Bestellte Produkte im Backend
+ 
 
 # TODO
 - Bestellvorgang
@@ -10,9 +12,14 @@
 - Kundenverwaltung
 - Kontaktformular mit Auswertung
 - Upload / Edit News Images
-- Produktverwaltung
+- Produktverwaltung - Image Edit
 - Implementierung Datenschutz und Impressum
 ------------------------
+
+## 08.08.17
+- Image Upload für Produktbilder
+- Produktübersicht und Warenkorb
+
 
 ## 31.07.17
 - Überblick über das Programm
