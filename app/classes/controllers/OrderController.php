@@ -10,6 +10,8 @@
 namespace Marten\classes\controllers;
 
 use Marten\classes\App;
+use Marten\classes\models\Customer;
+use Marten\classes\models\Order;
 use Marten\classes\Status;
 
 class OrderController
@@ -42,6 +44,19 @@ class OrderController
 				case 'save':
 
 					if($this->validateSubmission($_POST)){
+
+						$customer = new Customer();
+						$customer_id = $customer->save($_SESSION['customer_data']);
+
+						$order = new Order();
+						$order_id = $order->save($customer_id);
+
+						$order->saveOrderToProducts($_SESSION['cart'], $order_id);
+
+						// TODO : Send mail to Admin
+						// TODO : Send mail to Customer
+
+						App::redirectTo('success');
 
 					}
 
