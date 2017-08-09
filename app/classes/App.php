@@ -43,6 +43,8 @@ class App
 			'login',
 			'contact',
 			'shop',
+			'success',
+			'all-orders'
 		];
 
 
@@ -95,6 +97,14 @@ class App
 				if (!empty($news->content)) {
 					$this->content['edit'] = $news->content;
 				}
+				break;
+
+			case 'all-orders':
+				Auth::allow(App::getUserRole(), [ADMIN]);
+
+				$order = new OrderController();
+				$this->content['orders'] = $order->requestOrders();
+
 				break;
 
 			case 'products-edit':

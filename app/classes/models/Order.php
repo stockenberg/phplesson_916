@@ -46,9 +46,9 @@ class Order extends Model
 
 			$stmt->execute(
 				[
-					':product_id' => $product_id,
-					':order_id' => $order_id,
-					':product_amount' => $amount
+					':product_id'     => $product_id,
+					':order_id'       => $order_id,
+					':product_amount' => $amount,
 				]
 			);
 
@@ -56,10 +56,26 @@ class Order extends Model
 
 	}
 
+	public function getCustomerOrders()
+	{
+		$SQL = "SELECT P.*, OP.*, O.*, C.*
+				FROM 
+				orders_products AS OP, 
+				products AS P, 
+				orders AS O, 
+				customers AS C
+				WHERE OP.product_id = P.id 
+				AND OP.order_id = O.id 
+				AND O.customer_id = C.id";
+
+		$stmt = $this->db->prepare($SQL);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 	/*
-	SELECT P.*, OP.*, O.*, C.*
-FROM orders_products as OP, products as P, orders as O, customers as C
-WHERE OP.product_id = P.id AND OP.order_id = O.id AND O.customer_id = C.id;
+
+
 
 	 */
 

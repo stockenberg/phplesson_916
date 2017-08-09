@@ -43,33 +43,27 @@ class OrderController
 
 				case 'save':
 
-					if($this->validateSubmission($_POST)){
+					if ($this->validateSubmission($_POST)) {
 
 						$customer = new Customer();
-						$customer_id = $customer->save($_SESSION['customer_data']);
+						$customer_id
+							= $customer->save($_SESSION['customer_data']);
 
 						$order = new Order();
 						$order_id = $order->save($customer_id);
 
-						$order->saveOrderToProducts($_SESSION['cart'], $order_id);
+						$order->saveOrderToProducts($_SESSION['cart'],
+							$order_id);
 
 						// TODO : Send mail to Admin
 						// TODO : Send mail to Customer
 
+						unset($_SESSION['cart']);
+						unset($_SESSION['customer_data']);
+
 						App::redirectTo('success');
 
 					}
-
-					/**
-					 * check if AGB is true - DONE
-					 * Check if Privacy is true - DONE
-					 * Save Customer
-					 * Use Customer ID to save order
-					 * Use Order and Product ID to save orders_products
-					 * Send Mail to Admin
-					 * Send Mail to Customer
-					 * Redirect to Success Page
-					 */
 
 					break;
 			}
@@ -77,18 +71,57 @@ class OrderController
 
 	}
 
-	public function validateSubmission(Array $post = NULL) : bool
+	public function requestOrders()
 	{
-		if(isset($post['submit'])){
-			if(!isset($post['agb'])){
+		$order = new Order();
+		$orders = $order->getCustomerOrders();
+
+		// TODO : Transfer total to orders table for avoiding hazzle
+
+		$output = [];
+
+		foreach ($orders as $index => $orderData) {
+
+			$output[$orderData['order_id']]['order'] = [
+				'firstname'   => $orderData['firstname'],
+				'lastname'    => $orderData['lastname'],
+				'email'       => $orderData['email'],
+				'city'        => $orderData['city'],
+				'street'      => $orderData['street'],
+				'postcode'    => $orderData['postcode'],
+				'customer_id' => $orderData['customer_id'],
+				'order_id'    => $orderData['order_id'],
+				'shipped_at'  => $orderData['shipped_at'],
+				'state_id'    => $orderData['state_id'],
+				'updated_at'  => $orderData['updated_at'],
+				'created_at'  => $orderData['created_at'],
+			];
+
+			$output[$orderData['order_id']]['products'][] = [
+				'name'           => $orderData['name'],
+				'product_amount' => $orderData['product_amount'],
+				'price'          => $orderData['price'],
+				'product_id'     => $orderData['product_id'],
+			];
+
+		}
+
+		return $output;
+	}
+
+	public function validateSubmission(Array $post = null): bool
+	{
+		if (isset($post['submit'])) {
+			if (!isset($post['agb'])) {
 				Status::write('agb', 'Bitte bestätige die AGBs');
 			}
 
-			if(!isset($post['privacy'])){
-				Status::write('privacy', 'Bitte bestätige die Datenschutzerklärung');
+			if (!isset($post['privacy'])) {
+				Status::write('privacy',
+					'Bitte bestätige die Datenschutzerklärung');
 			}
 
-			if(Status::empty()){
+			if (Status::empty()) {
 				return true;
 			}
 		}
@@ -99,8 +132,8 @@ class OrderController
 
 	public static function allowDataView()
 	{
-		if(isset($_SESSION['cart'])){
-			if(!empty($_SESSION['cart'])){
+		if (isset($_SESSION['cart'])) {
+			if (!empty($_SESSION['cart'])) {
 				return true;
 			}
 			App::redirectTo('cart');
@@ -110,8 +143,9 @@ class OrderController
 
 	public static function allowOverView()
 	{
-		if(isset($_SESSION['cart'], $_SESSION['customer_data'])){
-			if(!empty($_SESSION['cart']) && !empty($_SESSION['customer_data'])){
+		if (isset($_SESSION['cart'], $_SESSION['customer_data'])) {
+			if (!empty($_SESSION['cart'])
+				&& !empty($_SESSION['customer_data'])) {
 				return true;
 			}
 			App::redirectTo('cart');
