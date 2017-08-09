@@ -43,8 +43,6 @@ class OrderController
 
 					if($this->validateSubmission($_POST)){
 
-					}else{
-						App::redirectTo('order-overview');
 					}
 
 					/**
@@ -68,11 +66,11 @@ class OrderController
 	{
 		if(isset($post['submit'])){
 			if(!isset($post['agb'])){
-				Status::write('Bitte bestätige die AGBs');
+				Status::write('agb', 'Bitte bestätige die AGBs');
 			}
 
 			if(!isset($post['privacy'])){
-				Status::write('Bitte bestätige die Datenschutzerklärung');
+				Status::write('privacy', 'Bitte bestätige die Datenschutzerklärung');
 			}
 
 			if(Status::empty()){
