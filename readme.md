@@ -1,5 +1,8 @@
-# Heute
+# Morgen
 - Hausaufgaben checken - Maximale Artikel in Datenbank
+    - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
+
+# Heute
 - Bestellvorgang abschließen
     - Mailversand an Admins
     - Bestätigungsmail an den Kunden

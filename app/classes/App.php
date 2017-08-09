@@ -42,7 +42,7 @@ class App
 			'order-overview',
 			'login',
 			'contact',
-			'shop'
+			'shop',
 		];
 
 
@@ -133,11 +133,18 @@ class App
 				break;
 
 			case 'order-data':
+				OrderController::allowDataView();
 				$order = new OrderController();
+				$order->run();
 				break;
 
 			case 'order-overview':
+				OrderController::allowOverView();
 				$order = new OrderController();
+				$order->run();
+				$cart = new CartController();
+				$cart->run();
+				$this->content['cart'] = $cart->getCartItems($_SESSION['cart']);
 				break;
 
 			case 'login':
