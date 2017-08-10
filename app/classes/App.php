@@ -18,6 +18,7 @@ use Marten\classes\controllers\NewsController;
 use Marten\classes\controllers\OrderController;
 use Marten\classes\controllers\ProductController;
 use Marten\classes\controllers\ShopController;
+use Marten\classes\controllers\StateController;
 
 class App
 {
@@ -44,7 +45,8 @@ class App
 			'contact',
 			'shop',
 			'success',
-			'all-orders'
+			'all-orders',
+			'edit-state'
 		];
 
 
@@ -97,6 +99,13 @@ class App
 				if (!empty($news->content)) {
 					$this->content['edit'] = $news->content;
 				}
+				break;
+
+			case 'edit-state':
+				$state = new StateController();
+				$state->run();
+
+				$this->content['states'] = $state->requestStates();
 				break;
 
 			case 'all-orders':

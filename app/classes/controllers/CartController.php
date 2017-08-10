@@ -40,12 +40,17 @@ class CartController
 
 		$result = [];
 
+		$_SESSION['total'] = 0;
+
 		$counter = 0;
 		foreach ($cart as $productId => $amount){
 			$thisProduct = $product->getProductById($productId)[0];
 
 			$result[$counter] = $thisProduct;
 			$result[$counter]['ordered_amount'] = $amount;
+
+			/** Get the Total in the session for saving in database */
+			$_SESSION['total'] += $thisProduct['price'] * $amount;
 
 			$counter++;
 		}

@@ -15,7 +15,7 @@
             <tbody>
 			<?php
             $total = 0;
-            foreach ($app->content['cart'] as $index => $product) :
+            foreach ($app->content['cart'] ?? [] as $index => $product) :
                 $total += $product['price'] * $product['ordered_amount'];
                 ?>
 

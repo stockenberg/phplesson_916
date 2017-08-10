@@ -13,20 +13,21 @@
 			</thead>
 			<tbody>
             <?php foreach ($app->content['orders'] as $order_id => $order) : ?>
-			<tr>
-				<td><?= $order['order']['created_at'] ?></td>
+			<tr class="activator">
+				<td><?= date( 'd.m.y - H:i', strtotime($order['order']['created_at'])) ?> Uhr</td>
 				<td><?= $order['order']['order_id'] ?></td>
 				<td><?= $order['order']['firstname'] ?></td>
 				<td><?= $order['order']['lastname'] ?></td>
-				<td>##PREIS##</td>
+				<td><?= number_format($order['order']['total'], 2, ',', '.') ?> &euro;</td>
                 <td><?= $order['order']['state_id'] ?></td>
 
             </tr>
-            <tr>
+            <tr class="hidden">
                 <td colspan="6">
+                    <ul>
                     <?php foreach ($order['products'] as $index => $product) : ?>
                         <li><?= $product['name'] ?></li>
-                        <li><?= $product['price'] ?></li>
+                        <li><?= number_format($product['price'], 2, ',', '.') ?> &euro;</li>
                         <li><?= $product['product_amount'] ?></li>
                         <hr>
                     <?php endforeach; ?>

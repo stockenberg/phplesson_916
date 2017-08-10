@@ -50,7 +50,8 @@ class OrderController
 							= $customer->save($_SESSION['customer_data']);
 
 						$order = new Order();
-						$order_id = $order->save($customer_id);
+						$order_id = $order->save($customer_id,
+							(float)$_SESSION['total']);
 
 						$order->saveOrderToProducts($_SESSION['cart'],
 							$order_id);
@@ -88,6 +89,7 @@ class OrderController
 				'email'       => $orderData['email'],
 				'city'        => $orderData['city'],
 				'street'      => $orderData['street'],
+				'total'       => $orderData['total'],
 				'postcode'    => $orderData['postcode'],
 				'customer_id' => $orderData['customer_id'],
 				'order_id'    => $orderData['order_id'],

@@ -12,13 +12,13 @@ namespace Marten\classes\models;
 class Order extends Model
 {
 
-	public function save(Int $customer_id)
+	public function save(Int $customer_id, float $total)
 	{
 		$SQL
 			= 'INSERT INTO orders 
-				(customer_id, state_id, shipped_at) 
+				(customer_id, state_id, shipped_at, total) 
 				VALUES
-				(:customer_id, :state_id, :shipped_at)';
+				(:customer_id, :state_id, :shipped_at, :total)';
 
 		$stmt = $this->db->prepare($SQL);
 
@@ -26,6 +26,7 @@ class Order extends Model
 			":customer_id" => $customer_id,
 			":state_id"    => 1,
 			":shipped_at"  => null,
+			':total' => $total
 		]);
 
 		return $this->db->lastInsertId();
@@ -66,7 +67,8 @@ class Order extends Model
 				customers AS C
 				WHERE OP.product_id = P.id 
 				AND OP.order_id = O.id 
-				AND O.customer_id = C.id";
+				AND O.customer_id = C.id 
+				ORDER BY O.created_at DESC";
 
 		$stmt = $this->db->prepare($SQL);
 		$stmt->execute();
