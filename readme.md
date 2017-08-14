@@ -1,23 +1,22 @@
 # Morgen
-- Hausaufgaben checken - Maximale Artikel in Datenbank
-    - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
-
-# Heute
-- Bestellvorgang abschließen
-    - Mailversand an Admins
-    - Bestätigungsmail an den Kunden
-- Bestellte Produkte im Backend
- 
-
-# TODO
-- Bestellvorgang
-- Statusverwaltung
-- Kundenverwaltung
 - Kontaktformular mit Auswertung
 - Upload / Edit News Images
 - Produktverwaltung - Image Edit
 - Implementierung Datenschutz und Impressum
+- Polishen
+
+# Heute
+- Hausaufgaben checken - Maximale Artikel in Datenbank
+    - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
+- Statusverwaltung
+- Status der Bestellung verändern
+- PHPMailer einbauen
+- Neue Benutzer anlegen
+
 ------------------------
+
+## 09.08. & 10.08.
+- Bestellvorgang
 
 ## 08.08.17
 - Image Upload für Produktbilder
