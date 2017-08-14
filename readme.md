@@ -1,3 +1,5 @@
+# Offene Themen
+
 # Morgen
 - Kontaktformular mit Auswertung
 - Upload / Edit News Images
@@ -10,6 +12,7 @@
 - deployment
 
 # Heute
+- Dynamische Variablen und Funktionen
 - Hausaufgaben checken - Maximale Artikel in Datenbank
     - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
 - Statusverwaltung
@@ -21,6 +24,7 @@
 
 ## 09.08. & 10.08.
 - Bestellvorgang
+- Status Management
 
 ## 08.08.17
 - Image Upload für Produktbilder
