@@ -7,6 +7,7 @@
     - Navigationen für alle Rechtestufen
     - Fehlermeldungen scannen - logiken testen
     - etc... 
+- deployment
 
 # Heute
 - Hausaufgaben checken - Maximale Artikel in Datenbank
