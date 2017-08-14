@@ -18,16 +18,35 @@
 				<td><?= $order['order']['order_id'] ?></td>
 				<td><?= $order['order']['firstname'] ?></td>
 				<td><?= $order['order']['lastname'] ?></td>
+
 				<td><?= number_format($order['order']['total'], 2, ',', '.') ?> &euro;</td>
-                <td><?= $order['order']['state_id'] ?></td>
+                <td>
+
+
+                    <form action="?p=all-orders&action=update_state&order_id=<?= $order['order']['order_id'] ?>" method="post">
+
+                        <select name="state_id" id="">
+                            <?php foreach ($app->content['states'] as $index => $state) : ?>
+                                <option value="<?= $state['state_id'] ?>" <?= ($order['order']['state_id'] === $state['state_id']) ? "selected" : "" ?> >
+                                    <?= $state['state'] // oder state_name ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Refresh">
+                        
+                    </form>
+
+
+                </td>
 
             </tr>
-            <tr class="hidden">
+            <tr class="">
                 <td colspan="6">
                     <ul>
                     <?php foreach ($order['products'] as $index => $product) : ?>
                         <li><?= $product['name'] ?></li>
-                        <li><?= number_format($product['price'], 2, ',', '.') ?> &euro;</li>
+
+                        <li><?= number_format((int)$product['price'], 2, ',', '.') ?> &euro;</li>
                         <li><?= $product['product_amount'] ?></li>
                         <hr>
                     <?php endforeach; ?>

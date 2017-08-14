@@ -9,18 +9,21 @@
     - Navigationen für alle Rechtestufen
     - Fehlermeldungen scannen - logiken testen
     - etc... 
-- deployment
+- Deployment
+
 
 # Heute
-- Dynamische Variablen und Funktionen
-- Hausaufgaben checken - Maximale Artikel in Datenbank
-    - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
-- Statusverwaltung
-- Status der Bestellung verändern
-- PHPMailer einbauen
 - Neue Benutzer anlegen
 
 ------------------------
+## 14.08.
+- PHPMailer einbauen
+- Status der Bestellung verändern
+- Statusverwaltung
+- Dynamische Variablen und Funktionen
+- Hausaufgaben checken - Maximale Artikel in Datenbank
+    - Findet eine Lösung, wie wir sicherstellen können, dass der Kunde nicht zu viele Produkte bestellt, die u.U. nicht vorrätig sind.
+
 
 ## 09.08. & 10.08.
 - Bestellvorgang

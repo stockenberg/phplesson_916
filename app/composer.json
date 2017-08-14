@@ -13,5 +13,9 @@
     "psr-4": {
       "Marten\\classes\\": "./classes/"
     }
+  },
+  "require": {
+    "phpmailer/phpmailer": "^5.2",
+    "filp/whoops": "^2.1"
   }
 }

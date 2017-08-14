@@ -56,6 +56,7 @@ class App
 	 */
 	public function generateFilesFromWhitelist(): void
 	{
+
 		foreach ($this->whitelist as $value) {
 			$filename = BASE_PATH.'pages/'.$value.'.php';
 			if (!file_exists($filename)) {
@@ -102,6 +103,8 @@ class App
 				break;
 
 			case 'edit-state':
+				Auth::allow(App::getUserRole(), [ADMIN]);
+
 				$state = new StateController();
 				$state->run();
 
@@ -112,7 +115,10 @@ class App
 				Auth::allow(App::getUserRole(), [ADMIN]);
 
 				$order = new OrderController();
+				$order->run();
+
 				$this->content['orders'] = $order->requestOrders();
+				$this->content['states'] = $order->requestStates();
 
 				break;
 

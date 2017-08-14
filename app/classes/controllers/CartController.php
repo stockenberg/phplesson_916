@@ -10,6 +10,7 @@ namespace Marten\classes\controllers;
 
 use Marten\classes\App;
 use Marten\classes\models\Product;
+use Marten\classes\Status;
 
 class CartController
 {
@@ -26,8 +27,15 @@ class CartController
 
 				case 'update_amount':
 					if(!empty($_POST)){
-						$_SESSION['cart'][$_GET['id']] = str_replace('-', '', $_POST['amount']);
-						App::redirectTo('cart');
+						$product = new Product();
+						$amount_in_db = $product->getProductById($_GET['id'])[0]['amount'];
+						if($_POST['amount'] > $amount_in_db){
+							Status::write('amount_' . $_GET['id'], "Es sind nurnoch {$amount_in_db} Produkte verfügbar..");
+						}else {
+							$_SESSION['cart'][$_GET['id']] = str_replace('-',
+								'', $_POST['amount']);
+							App::redirectTo('cart');
+						}
 					}
 					break;
 			}

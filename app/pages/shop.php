@@ -27,6 +27,7 @@
                             <i class="glyphicon glyphicon-shopping-cart"></i>
                         </button>
                     </form>
+                    <p class="text-danger"><?= \Marten\classes\Status::read('amount_' . $products['id']) ?></p>
                 </div>
 			<?php endforeach; ?>
 

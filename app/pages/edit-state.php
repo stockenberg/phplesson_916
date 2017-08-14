@@ -12,7 +12,7 @@
 			<?php foreach ($app->content['states'] as $index => $state) : ?>
                 <tr>
                     <td><?= $state['state_id'] ?></td>
-                    <td><?= $state['name'] ?></td>
+                    <td><?= $state['state'] ?></td>
                     <td>
                         <a href="?p=edit-state&action=delete&id=<?= $state['id'] ?>"
                            class="btn">Delete</a></td>

@@ -34,7 +34,7 @@ class State extends Model
 
 	public function save(array $post)
 	{
-		$SQL = 'INSERT INTO states (name, state_id) VALUES (:name, :state_id)';
+		$SQL = 'INSERT INTO states (state, state_id) VALUES (:name, :state_id)';
 		$stmt = $this->db->prepare($SQL);
 		$stmt->execute([':name' => $post['name'], ':state_id' => $post['state_id']]);
 
@@ -46,5 +46,7 @@ class State extends Model
 		$stmt = $this->db->prepare($SQL);
 		$stmt->execute([':id' => $id]);
 	}
+
+
 
 }

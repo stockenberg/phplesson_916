@@ -35,6 +35,9 @@
                                 <i class="glyphicon glyphicon-refresh"></i>
                             </button>
                         </form>
+                        <p class="text-danger">
+                            <?= \Marten\classes\Status::read('amount_' . $product['id']) ?>
+                        </p>
                     </td>
                     <td><?= number_format(
                             $product['price'] * $product['ordered_amount'],

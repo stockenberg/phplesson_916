@@ -12,6 +12,7 @@ namespace Marten\classes\controllers;
 use Marten\classes\App;
 use Marten\classes\models\Customer;
 use Marten\classes\models\Order;
+use Marten\classes\models\State;
 use Marten\classes\Status;
 
 class OrderController
@@ -41,6 +42,15 @@ class OrderController
 
 					break;
 
+				case 'update_state':
+					if(!empty($_POST)){
+						$order = new Order();
+						$order->updateState($_GET['order_id'], $_POST['state_id']);
+
+						App::redirectTo('all-orders');
+					}
+					break;
+
 				case 'save':
 
 					if ($this->validateSubmission($_POST)) {
@@ -57,6 +67,7 @@ class OrderController
 							$order_id);
 
 						// TODO : Send mail to Admin
+						$this->sendAdminMail($_SESSION['customer_data']);
 						// TODO : Send mail to Customer
 
 						unset($_SESSION['cart']);
@@ -71,6 +82,57 @@ class OrderController
 		}
 
 	}
+
+	public function sendAdminMail($customer)
+	{
+		$mail = new \PHPMailer();
+		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+
+		$mail->isSMTP();                                      // Set mailer to use SMTP
+		$mail->Host = '	smtp.mailtrap.io';  // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+		$mail->Username = '435d28e588960e';                 // SMTP username
+		$mail->Password = 'b1ee7e13ccc008';                           // SMTP password
+		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+		$mail->Port = 25;                                    // TCP port to connect to
+		/*
+		':email'     => $customer['email'],
+				':firstname' => $customer['firstname'],
+				':lastname'  => $customer['lastname'],
+				':street'    => $customer['street'],
+				':postcode'  => $customer['postcode'],
+				':city'      => $customer['city'],
+		*/
+		$mail->setFrom('info@mstockenberg.de', 'Mailer');
+		$mail->addAddress($customer['email']);     // Add a recipient
+		$mail->addReplyTo('info@mstockenberg.de', 'Information');
+
+		$mail->isHTML(true);                                  // Set email format to HTML
+
+		$mail->Subject = 'Eine neue Bestellung ist eingetroffen.';
+		$mail->Body    =
+			"
+				Kundendetails: <br />
+				Name: {$customer['firstname']} {$customer['lastname']} <br>
+				Adresse: {$customer['street']}  {$customer['postcode']} {$customer['city']} <br> 
+			";
+		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+		if(!$mail->send()) {
+			echo 'Message could not be sent.';
+			echo 'Mailer Error: ' . $mail->ErrorInfo;
+		} else {
+			echo 'Message has been sent';
+		}
+	}
+
+	public function requestStates()
+	{
+		$state = new State();
+		return $state->getStates();
+	}
+
 
 	public function requestOrders()
 	{
@@ -94,6 +156,7 @@ class OrderController
 				'customer_id' => $orderData['customer_id'],
 				'order_id'    => $orderData['order_id'],
 				'shipped_at'  => $orderData['shipped_at'],
+				'state'       => $orderData['state'],
 				'state_id'    => $orderData['state_id'],
 				'updated_at'  => $orderData['updated_at'],
 				'created_at'  => $orderData['created_at'],
