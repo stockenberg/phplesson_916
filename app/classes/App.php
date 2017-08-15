@@ -19,6 +19,7 @@ use Marten\classes\controllers\OrderController;
 use Marten\classes\controllers\ProductController;
 use Marten\classes\controllers\ShopController;
 use Marten\classes\controllers\StateController;
+use Marten\classes\controllers\UserController;
 
 class App
 {
@@ -47,7 +48,9 @@ class App
 			'success',
 			'all-orders',
 			'edit-state',
-			'edit-users'
+			'edit-users',
+			'imprint',
+			'privacy'
 		];
 
 
@@ -75,7 +78,8 @@ class App
 
 	public static function getUserRole()
 	{
-		return $_SESSION['user']['role'] ?? 0;
+		$role = (int) $_SESSION['user']['role'];
+		return  $role ?? 0;
 	}
 
 	/**
@@ -110,6 +114,15 @@ class App
 				$state->run();
 
 				$this->content['states'] = $state->requestStates();
+				break;
+
+			case 'edit-users':
+				Auth::allow(App::getUserRole(), [ADMIN]);
+
+				$user = new UserController();
+				$user->run();
+
+				$this->content['users'] = $user->requestUsers();
 				break;
 
 			case 'all-orders':

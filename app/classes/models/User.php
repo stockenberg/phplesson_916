@@ -25,4 +25,34 @@ class User extends Model
 		return $user;
 	}
 
+	public function delete(int $user_id)
+	{
+		$SQL = 'DELETE FROM users WHERE id = :id';
+		$this->set($SQL, [':id' => $user_id]);
+	}
+
+	public function save(array $post) : void
+	{
+		$SQL = 'INSERT INTO users 
+				(username, email, password, role) 
+				VALUES
+				(:username, :email, :password, :role)';
+
+		$execute = [
+			':username' => $post['username'],
+			':email' => $post['email'],
+			':password' => password_hash($post['password'], PASSWORD_BCRYPT, ['cost' => 12]),
+			':role' => $post['role'],
+		];
+
+		$this->set($SQL, $execute);
+	}
+
+
+
+	public function getAllExceptAdmin()
+	{
+		$SQL = 'SELECT * FROM users WHERE id != 1';
+		return $this->fetch($SQL, []);
+	}
 }

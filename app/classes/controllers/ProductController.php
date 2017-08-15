@@ -54,6 +54,10 @@ class ProductController
 				case 'update':
 					if ($this->validate($_POST)) {
 						$products = new Product();
+
+						$this->uploadProductImage();
+						$_POST['current_image'] = $this->findImageNameWhileEditing($_POST['current_image'], $_FILES);
+
 						$products->update($_POST, $_GET['update']);
 
 						header('Location: ?p=products-edit');
@@ -83,17 +87,36 @@ class ProductController
 		return $products->getProducts();
 	}
 
+	public function findImageNameWhileEditing(
+		string $current_image,
+		array $files
+	) {
+		if ($files['img']['error'] === 4) {
+			return $current_image;
+		}
+
+		if ($files['img']['error'] === 0) {
+			if (file_exists('uploads/img/products/'.$current_image)) {
+				unlink('uploads/img/products/'.$current_image);
+			}
+
+			return $files['img']['name'];
+		}
+
+	}
+
 
 	public function uploadProductImage()
 	{
 		if ($_FILES['img']['error'] !== 4) {
 
-			if($_FILES['img']['error'] === 1){
+			if ($_FILES['img']['error'] === 1) {
 				Status::write('img', "Das Hochgeladene Bild ist zu groß");
+
 				return false;
 			}
 
-			if($_FILES['img']['error'] === 0) {
+			if ($_FILES['img']['error'] === 0) {
 				if (!is_dir('uploads/img/products')) {
 					mkdir('uploads/img/products/', 0777, true);
 				}
@@ -102,13 +125,17 @@ class ProductController
 					'uploads/img/products/'.basename($_FILES['img']['name']))) {
 					return true;
 				}
-				Status::write('img', "Das Verschieben des Bildes hat nicht geklappt");
+				Status::write('img',
+					"Das Verschieben des Bildes hat nicht geklappt");
+
 				return false;
 			}
-			Status::write('img', "Upload Fehlerhaft, bitte support kontaktieren...");
+			Status::write('img',
+				"Upload Fehlerhaft, bitte support kontaktieren...");
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -133,6 +160,7 @@ class ProductController
 			if ($post['description'] === '') {
 				Status::write('description', 'Bitte Beschreibung ausfüllen');
 			}
+
 
 			if (Status::empty()) {
 				return true;

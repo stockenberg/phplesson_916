@@ -33,7 +33,7 @@ class Product extends Model
 	public function update(array $post = null, int $id = null) : void
 	{
 		$SQL = 'UPDATE products 
-				SET name = :name, amount = :amount, price = :price, description = :description 
+				SET name = :name, img = :img, amount = :amount, price = :price, description = :description 
 				WHERE id = :id';
 
 		$stmt = $this->db->prepare($SQL);
@@ -41,6 +41,7 @@ class Product extends Model
 		$stmt->execute(
 			[
 				':name' => htmlentities(strip_tags($post['name'])),
+				':img' => htmlentities(strip_tags($post['current_image'])),
 				':amount' => htmlentities(strip_tags($post['amount'])),
 				':price' => htmlentities(strip_tags($post['price'])),
 				':description' => htmlentities(strip_tags($post['description'])),

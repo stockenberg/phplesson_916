@@ -24,6 +24,14 @@ class Status implements StatusInterface
 		return '';
 	}
 
+	public static function debug()
+	{
+		echo "<pre>";
+		    print_r(self::$status);
+		echo "</pre>";
+		exit();
+	}
+
 	public static function write(String $key = null, String $value = null): void
 	{
 		self::$status[$key] = $value;

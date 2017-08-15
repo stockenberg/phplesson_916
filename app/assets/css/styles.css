@@ -16,6 +16,17 @@
     border-radius:50%;
 }
 
+.flash{
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    padding: 10px;
+    background: #ff5a4d;
+    color: white;
+    text-align: center;
+    font-weight:bold;
+}
+
 .login-card .profile-name-card {
     font-size:16px;
     font-weight:bold;

@@ -88,7 +88,7 @@
             </div>
 
 
-
+            <input type="hidden" name="current_image" value="<?= isset($app->content['edit']) ? $app->content['edit'][0]['img'] : ''?>">
             <input type="submit" name='submit' value="speichern" class="btn btn-primary">
         </form>
     </div>

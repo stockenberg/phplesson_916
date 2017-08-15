@@ -51,6 +51,7 @@
     - Daten
     - HTML Template
     - Whitelist Eintrag
+    - Controller
     - App:Case
     
 - Wir Brauchen:

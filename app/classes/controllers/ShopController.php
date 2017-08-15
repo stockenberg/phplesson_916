@@ -21,7 +21,7 @@ class ShopController
 		if (isset($_GET['action'])){
 			switch ($_GET['action']){
 				case 'add_to_cart':
-						if(!empty($_POST)){
+						if(!empty($_POST) && $_POST['amount'] !== ''){
 							$product = new Product();
 							$amount_in_db = $product->getProductById($_POST['id'])[0]['amount'];
 							if($_POST['amount'] > $amount_in_db){
@@ -31,6 +31,7 @@ class ShopController
 								App::redirectTo('cart');
 							}
 						}
+						App::redirectTo('shop');
 					break;
 			}
 		}

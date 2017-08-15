@@ -36,7 +36,11 @@ $app->boot();
 </head>
 
 <body>
+<p class="flash">
+	<?= \Marten\classes\Status::read('error') ?>
+</p>
 <div>
+
 
 	<nav class="navbar navbar-default navigation-clean">
 		<div class="container">
@@ -59,8 +63,8 @@ $app->boot();
 							<?= isset($_SESSION['cart']) ? count($_SESSION['cart']) : "0" ?>
 							)
 						</a></li>
-					<li role="presentation"><a href="">Impressum</a></li>
-					<li role="presentation"><a href="">Datenschutz</a></li>
+					<li role="presentation"><a href="?p=imprint">Impressum</a></li>
+					<li role="presentation"><a href="?p=privacy">Datenschutz</a></li>
 
 					<?php if (!isset($_SESSION['user']['id'])) : ?>
 
@@ -76,11 +80,18 @@ $app->boot();
 												class="dropdown-toggle">Admin
 								<span class="caret"></span></a>
 							<ul role="menu" class="dropdown-menu">
+
+                                <?php if(\Marten\classes\App::getUserRole() === ADMIN || \Marten\classes\App::getUserRole() === AUTHOR) : ?>
 								<li role="presentation"><a href="?p=news-edit">News</a></li>
 								<li role="presentation"><a href="?p=products-edit">Produkte</a></li>
-								<li role="presentation"><a href="?p=all-orders">Bestellungen</a></li>
-								<li role="presentation"><a href="?p=edit-state">Statusverwaltung</a></li>
-								<li role="presentation"><a href="">Benutzer</a></li>
+                                <li role="presentation"><a href="?p=all-orders">Bestellungen</a></li>
+                                <?php endif; ?>
+
+								<?php if(\Marten\classes\App::getUserRole() === ADMIN) : ?>
+                                <li role="presentation"><a href="?p=edit-state">Statusverwaltung</a></li>
+                                <li role="presentation"><a href="?p=edit-users">Benutzer</a></li>
+                                <?php endif; ?>
+
 							</ul>
 						</li>
 						<li role="presentation"><a
@@ -130,6 +141,18 @@ $app->boot();
         $('.show').click(function () {
             $(this).next().toggleClass('hidden');
         })
+
+        var flash = $('.flash');
+
+        if(flash[0].innerText === ''){
+            flash.remove();
+        }else{
+            setTimeout(function () {
+                flash.fadeOut(500, function () {
+                    flash.remove();
+                });
+            }, 1500);
+        }
     });
 </script>
 </body>
