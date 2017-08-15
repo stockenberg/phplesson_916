@@ -10,6 +10,7 @@ $whoops = new Whoops\Run();
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
+
 $app = new Marten\classes\App();
 $app->boot();
 
@@ -31,7 +32,6 @@ $app->boot();
 	<link rel="stylesheet" href="assets/css/Navigation-Clean1.css">
 	<link rel="stylesheet" href="assets/css/Simple-Slider.css">
 	<link rel="stylesheet" href="assets/css/styles.css">
-
 	<title>916 CMS</title>
 </head>
 

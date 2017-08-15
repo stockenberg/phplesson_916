@@ -16,6 +16,7 @@
   },
   "require": {
     "phpmailer/phpmailer": "^5.2",
-    "filp/whoops": "^2.1"
+    "filp/whoops": "^2.1",
+    "maximebf/debugbar": "^1.13"
   }
 }

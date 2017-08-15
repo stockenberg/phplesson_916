@@ -46,7 +46,8 @@ class App
 			'shop',
 			'success',
 			'all-orders',
-			'edit-state'
+			'edit-state',
+			'edit-users'
 		];
 
 
