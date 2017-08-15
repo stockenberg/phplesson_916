@@ -17,13 +17,14 @@
             $total = 0;
             foreach ($app->content['cart'] ?? [] as $index => $product) :
                 $total += $product['price'] * $product['ordered_amount'];
+
                 ?>
 
                 <tr class="text-center">
                     <td>
                         <img height="25"
                              src="uploads/img/products/<?= $product['img'] ?>"
-                             alt="<?= $product['title'] ?>">
+                             alt="<?= $product['name'] ?>">
                     </td>
                     <td><?= $product['name'] ?></td>
                     <td><?= $product['description'] ?></td>

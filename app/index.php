@@ -5,11 +5,11 @@ session_start();
 include __DIR__.'/config.php';
 require_once __DIR__.'/vendor/autoload.php';
 
-/*
+
 $whoops = new Whoops\Run();
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
-*/
+
 $app = new Marten\classes\App();
 $app->boot();
 

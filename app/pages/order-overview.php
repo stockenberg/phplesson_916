@@ -22,7 +22,7 @@
                     <td>
                         <img height="25"
                              src="uploads/img/products/<?= $product['img'] ?>"
-                             alt="<?= $product['title'] ?>">
+                             alt="<?= $product['name'] ?>">
                     </td>
                     <td><?= $product['name'] ?></td>
                     <td><?= $product['description'] ?></td>

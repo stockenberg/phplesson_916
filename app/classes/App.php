@@ -154,7 +154,7 @@ class App
 			case 'cart':
 				$cart = new CartController();
 				$cart->run();
-				$this->content['cart'] = $cart->getCartItems($_SESSION['cart']);
+				$this->content['cart'] = $cart->getCartItems($_SESSION['cart'] ?? []);
 				break;
 
 			case 'order-data':
@@ -169,7 +169,7 @@ class App
 				$order->run();
 				$cart = new CartController();
 				$cart->run();
-				$this->content['cart'] = $cart->getCartItems($_SESSION['cart']);
+				$this->content['cart'] = $cart->getCartItems($_SESSION['cart'] ?? []);
 				break;
 
 			case 'login':
@@ -184,7 +184,7 @@ class App
 
 		}
 
-		if (isset ($_GET['action']) && $_GET['action'] == 'logout') {
+		if (isset ($_GET['action']) && $_GET['action'] === 'logout') {
 
 			session_destroy();
 			session_unset();
