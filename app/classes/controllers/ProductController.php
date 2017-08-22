@@ -136,7 +136,7 @@ class ProductController
 			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 
