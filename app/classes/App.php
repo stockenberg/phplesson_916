@@ -72,14 +72,14 @@ class App
 
 	public static function getUserId()
 	{
-		return $_SESSION['user']['id'] ?? 0;
+		return isset($_SESSION['user']['id']) ? (int) $_SESSION['user']['id'] : 0 ;
 	}
 
 
 	public static function getUserRole()
 	{
-		$role = (int) $_SESSION['user']['role'];
-		return  $role ?? 0;
+		$role = isset($_SESSION['user']['role']) ? (int) $_SESSION['user']['role'] : 0 ;
+		return  $role;
 	}
 
 	/**

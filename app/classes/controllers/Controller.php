@@ -25,7 +25,7 @@ class Controller
 
 					default:
 						if ($value === '') {
-							Status::write($field, $errors[$field]);
+							Status::write($field, $errors[$field]['empty']);
 						}
 						break;
 				}
